@@ -1,22 +1,23 @@
 import Foundation
 
 public struct CountryReleaseDates: Codable, Equatable, Hashable {
-    // Country Code in iso_3166_1 format
-    public let iso31661: String
     
+    // Country Code in iso_3166_1 format
+    public let countryCode: String
+    
+    // An array of ReleaseDates for this country code.
     public let releaseDates: [ReleaseDate]
     
-    public init(iso31661: String, releaseDates: [ReleaseDate]) {
-        self.iso31661 = iso31661
+    public init(countryCode: String, releaseDates: [ReleaseDate]) {
+        self.countryCode = countryCode
         self.releaseDates = releaseDates
     }
-
 }
 
 extension CountryReleaseDates {
 
     private enum CodingKeys: String, CodingKey {
-        case iso31661 = "iso_3166_1"
+        case countryCode = "iso_3166_1"
         case releaseDates = "release_dates"
     }
 
