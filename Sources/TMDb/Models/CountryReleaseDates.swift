@@ -1,7 +1,10 @@
 import Foundation
 
-public struct CountryReleaseDates: Codable, Equatable, Hashable {
+public struct CountryReleaseDates: Identifiable, Codable, Equatable, Hashable {
     
+    /// Country's identifier (same as `countryCode`).
+    public var id: String { countryCode }
+
     // Country Code in iso_3166_1 format
     public let countryCode: String
     
@@ -17,7 +20,7 @@ public struct CountryReleaseDates: Codable, Equatable, Hashable {
 extension CountryReleaseDates {
 
     private enum CodingKeys: String, CodingKey {
-        case countryCode = "iso_3166_1"
+        case countryCode = "iso31661"
         case releaseDates = "release_dates"
     }
 
