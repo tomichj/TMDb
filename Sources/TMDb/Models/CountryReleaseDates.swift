@@ -21,7 +21,7 @@ extension CountryReleaseDates {
 
     private enum CodingKeys: String, CodingKey {
         case countryCode = "iso31661"
-        case releaseDates = "release_dates"
+        case releaseDates = "releaseDates"
     }
 
 }

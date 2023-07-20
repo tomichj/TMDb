@@ -41,9 +41,9 @@ extension ReleaseDate {
     private enum CodingKeys: String, CodingKey {
         case certification
         case descriptors
-        case languageCode = "iso_639_1"
+        case languageCode = "iso6391"
         case note
-        case releaseDateString = "release_date"
+        case releaseDateString = "releaseDate"
         case type
     }
 
