@@ -302,4 +302,9 @@ public final class MovieService {
         return movieList
     }
 
+    
+    public func releaseDates(forMovie movieID: Movie.ID) async throws -> ReleaseDates {
+        try await apiClient.get(endpoint: MoviesEndpoint.releaseDates(movieID: movieID))
+    }
+
 }
