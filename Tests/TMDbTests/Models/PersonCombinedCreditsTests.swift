@@ -16,8 +16,9 @@ final class PersonCombinedCreditsTests: XCTestCase {
     private let personCombinedCredits = PersonCombinedCredits(
         id: 287,
         cast: [
-            .tvShow(TVShow(
+            .tvShow(TVShowCredit(
                 id: 54,
+                creditId: 12301,
                 name: "Growing Pains",
                 originalName: "Growing Pains",
                 originalLanguage: "en",
@@ -28,10 +29,15 @@ final class PersonCombinedCreditsTests: XCTestCase {
                 backdropPath: URL(string: "/xYpXcp7S8pStWihcksTQQue3jlV.jpg"),
                 popularity: 2.883124,
                 voteAverage: 6.2,
-                voteCount: 25
+                voteCount: 25,
+                department: nil,
+                job: nil,
+                character: "Tony",
+                episodeCount: 105
             )),
-            .movie(Movie(
+            .movie(MovieCredit(
                 id: 109091,
+                creditId: 123012345,
                 title: "The Counselor",
                 originalTitle: "The Counselor",
                 originalLanguage: "en",
@@ -43,12 +49,16 @@ final class PersonCombinedCreditsTests: XCTestCase {
                 voteAverage: 5,
                 voteCount: 661,
                 hasVideo: false,
-                isAdultOnly: false
+                isAdultOnly: false,
+                department: nil,
+                job: nil,
+                character: "Bertha"
             ))
         ],
         crew: [
-            .tvShow(TVShow(
+            .tvShow(TVShowCredit(
                 id: 69061,
+                creditId: 6099999,
                 name: "The OA",
                 originalName: "The OA",
                 originalLanguage: "en",
@@ -58,10 +68,15 @@ final class PersonCombinedCreditsTests: XCTestCase {
                 backdropPath: URL(string: "/k9kPIikcQBzl93nSyXUfqc74J9S.jpg"),
                 popularity: 6.990147,
                 voteAverage: 7.3,
-                voteCount: 121
+                voteCount: 121,
+                department: "Production",
+                job: "Executive Producer",
+                character: "",
+                episodeCount: 14
             )),
-            .movie(Movie(
+            .movie(MovieCredit(
                 id: 174349,
+                creditId: 19238473,
                 title: "Big Men",
                 originalTitle: "Big Men",
                 originalLanguage: "en",
@@ -73,7 +88,10 @@ final class PersonCombinedCreditsTests: XCTestCase {
                 voteAverage: 6.4,
                 voteCount: 7,
                 hasVideo: false,
-                isAdultOnly: false
+                isAdultOnly: false,
+                department: "Production",
+                job: "Director",
+                character: ""
             ))
         ]
     )

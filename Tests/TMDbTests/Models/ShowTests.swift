@@ -50,6 +50,7 @@ extension ShowTests {
         .movie(
             .init(
                 id: 109091,
+                creditId: 12392192,
                 title: "The Counselor",
                 originalTitle: "The Counselor",
                 originalLanguage: "en",
@@ -61,7 +62,10 @@ extension ShowTests {
                 voteAverage: 5,
                 voteCount: 661,
                 hasVideo: false,
-                isAdultOnly: false
+                isAdultOnly: false,
+                department: nil,
+                job: nil,
+                character: "Big Todd"
             )
         )
     }
@@ -70,6 +74,7 @@ extension ShowTests {
         .tvShow(
             .init(
                 id: 54,
+                creditId: 554203,
                 name: "Growing Pains",
                 originalName: "Growing Pains",
                 originalLanguage: "en",
@@ -80,7 +85,11 @@ extension ShowTests {
                 backdropPath: URL(string: "/xYpXcp7S8pStWihcksTQQue3jlV.jpg"),
                 popularity: 2.883124,
                 voteAverage: 6.2,
-                voteCount: 25
+                voteCount: 25,
+                department: nil,
+                job: nil,
+                character: "Tony",
+                episodeCount: 123
             )
         )
     }
