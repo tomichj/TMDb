@@ -10,7 +10,7 @@ public struct TVShowCredit: Identifiable, Codable, Equatable, Hashable {
     ///
     public let id: Int
 
-    public let creditId: Int
+    public let creditID: String
 
     ///
     /// TV show name.
@@ -118,7 +118,7 @@ public struct TVShowCredit: Identifiable, Codable, Equatable, Hashable {
     ///
     public init(
         id: Int,
-        creditId: Int,
+        creditID: String,
         name: String,
         originalName: String? = nil,
         originalLanguage: String? = nil,
@@ -132,13 +132,13 @@ public struct TVShowCredit: Identifiable, Codable, Equatable, Hashable {
         voteAverage: Double? = nil,
         voteCount: Int? = nil,
         isAdultOnly: Bool? = nil,
-        department: String?,
-        job: String?,
-        character: String?,
-        episodeCount: Int?
+        department: String? = nil,
+        job: String? = nil,
+        character: String? = nil,
+        episodeCount: Int? = nil
     ) {
         self.id = id
-        self.creditId = creditId
+        self.creditID = creditID
         self.name = name
         self.originalName = originalName
         self.originalLanguage = originalLanguage
@@ -164,7 +164,7 @@ extension TVShowCredit {
 
     private enum CodingKeys: String, CodingKey {
         case id
-        case creditId
+        case creditID = "creditId"
         case name
         case originalName
         case originalLanguage
@@ -189,7 +189,7 @@ extension TVShowCredit {
         let container2 = try decoder.container(keyedBy: CodingKeys.self)
 
         self.id = try container.decode(Int.self, forKey: .id)
-        self.creditId = try container.decode(Int.self, forKey: .creditId)
+        self.creditID = try container.decode(String.self, forKey: .creditID)
         self.name = try container.decode(String.self, forKey: .name)
         self.originalName = try container.decodeIfPresent(String.self, forKey: .originalName)
         self.originalLanguage = try container.decodeIfPresent(String.self, forKey: .originalLanguage)
@@ -214,8 +214,8 @@ extension TVShowCredit {
         self.voteCount = try container.decodeIfPresent(Int.self, forKey: .voteCount)
         self.isAdultOnly = try container.decodeIfPresent(Bool.self, forKey: .isAdultOnly)
         self.department = try container.decodeIfPresent(String.self, forKey: .department)
-        self.job = try container.decodeIfPresent(String.self, forKey: .department)
-        self.character = try container.decodeIfPresent(String.self, forKey: .department)
+        self.job = try container.decodeIfPresent(String.self, forKey: .job)
+        self.character = try container.decodeIfPresent(String.self, forKey: .character)
         self.episodeCount = try container.decodeIfPresent(Int.self, forKey: .episodeCount)
     }
 

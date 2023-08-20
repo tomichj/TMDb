@@ -3,7 +3,7 @@ import Foundation
 ///
 /// A model representing a show - movie or TV show.
 ///
-public enum Show: Identifiable, Equatable, Hashable {
+public enum ShowCredit: Identifiable, Equatable, Hashable {
 
     ///
     /// Show identifier.
@@ -43,22 +43,20 @@ public enum Show: Identifiable, Equatable, Hashable {
             return tvShow.firstAirDate
         }
     }
-
-//    var character: String
     
     ///
     /// Movie.
     ///
-    case movie(Movie)
+    case movie(MovieCredit)
 
     ///
     /// TV show.
     ///
-    case tvShow(TVShow)
+    case tvShow(TVShowCredit)
 
 }
 
-extension Show: Decodable {
+extension ShowCredit: Decodable {
 
     private enum CodingKeys: String, CodingKey {
         case mediaType
@@ -75,10 +73,10 @@ extension Show: Decodable {
 
         switch mediaType {
         case .movie:
-            self = .movie(try Movie(from: decoder))
+            self = .movie(try MovieCredit(from: decoder))
 
         case .tvShow:
-            self = .tvShow(try TVShow(from: decoder))
+            self = .tvShow(try TVShowCredit(from: decoder))
         }
     }
 

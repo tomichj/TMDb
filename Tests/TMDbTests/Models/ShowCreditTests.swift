@@ -1,7 +1,7 @@
 @testable import TMDb
 import XCTest
 
-final class ShowTests: XCTestCase {
+final class ShowCreditTests: XCTestCase {
 
     func testIDWhenMovieReturnsMovieID() {
         XCTAssertEqual(movieShow.id, 109091)
@@ -30,26 +30,27 @@ final class ShowTests: XCTestCase {
     }
 
     func testDecodeReturnsMovie() throws {
-        let result = try JSONDecoder.theMovieDatabase.decode(Show.self, fromResource: "show-movie")
+        let result = try JSONDecoder.theMovieDatabase.decode(ShowCredit.self, fromResource: "show-movie")
 
         XCTAssertEqual(result, movieShow)
     }
 
     func testDecodeReturnsTVShow() throws {
-        let result = try JSONDecoder.theMovieDatabase.decode(Show.self, fromResource: "show-tv-show")
+        let result = try JSONDecoder.theMovieDatabase.decode(ShowCredit.self, fromResource: "show-tv-show")
 
         XCTAssertEqual(result, tvShowShow)
     }
 
 }
 
-extension ShowTests {
+extension ShowCreditTests {
 
     // swiftlint:disable line_length
-    private var movieShow: Show {
+    private var movieShow: ShowCredit {
         .movie(
             .init(
                 id: 109091,
+                creditID: "52fe4aaac3a36847f81db47d",
                 title: "The Counselor",
                 originalTitle: "The Counselor",
                 originalLanguage: "en",
@@ -61,15 +62,17 @@ extension ShowTests {
                 voteAverage: 5,
                 voteCount: 661,
                 hasVideo: false,
-                isAdultOnly: false
+                isAdultOnly: false,
+                character: "Westray"
             )
         )
     }
 
-    private var tvShowShow: Show {
+    private var tvShowShow: ShowCredit {
         .tvShow(
             .init(
                 id: 54,
+                creditID: "525333fb19c295794002c720",
                 name: "Growing Pains",
                 originalName: "Growing Pains",
                 originalLanguage: "en",
@@ -80,7 +83,9 @@ extension ShowTests {
                 backdropPath: URL(string: "/xYpXcp7S8pStWihcksTQQue3jlV.jpg"),
                 popularity: 2.883124,
                 voteAverage: 6.2,
-                voteCount: 25
+                voteCount: 25,
+                character: "",
+                episodeCount: 2
             )
         )
     }

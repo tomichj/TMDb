@@ -15,17 +15,17 @@ public struct PersonCombinedCredits: Identifiable, Decodable, Equatable, Hashabl
     ///
     /// Shows where the person is in the cast.
     ///
-    public let cast: [Show]
+    public let cast: [ShowCredit]
 
     ///
     /// Shows where the person is in the crew.
     ///
-    public let crew: [Show]
+    public let crew: [ShowCredit]
 
     ///
     /// All shows the person is in.
     ///
-    public var allShows: [Show] {
+    public var allShows: [ShowCredit] {
         (cast + crew).uniqued()
     }
 
@@ -36,7 +36,7 @@ public struct PersonCombinedCredits: Identifiable, Decodable, Equatable, Hashabl
     ///    - cast: Shows where person is in the cast.
     ///    - crew: Shows where person is in the case.
     ///
-    public init(id: Int, cast: [Show], crew: [Show]) {
+    public init(id: Int, cast: [ShowCredit], crew: [ShowCredit]) {
         self.id = id
         self.cast = cast
         self.crew = crew

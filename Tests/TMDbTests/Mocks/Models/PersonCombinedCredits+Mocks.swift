@@ -5,14 +5,14 @@ extension PersonCombinedCredits {
 
     static func mock(
         id: Int = .randomID,
-        cast: [Show] = [
+        cast: [ShowCredit] = [
             .movie(.jurassicWorldDominion),
             .tvShow(.theSandman),
             .movie(.topGunMaverick),
             .tvShow(.sheHulk),
             .tvShow(.strangerThings)
         ],
-        crew: [Show] = [
+        crew: [ShowCredit] = [
             .movie(.bulletTrain),
             .tvShow(.theSandman),
             .movie(.thorLoveAndThunder)

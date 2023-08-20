@@ -9,7 +9,7 @@ public struct MovieCredit: Identifiable, Codable, Equatable, Hashable {
     /// Movie identifier.
     ///
     public let id: Int
-    public let creditId: Int
+    public let creditID: String
 
     ///
     /// Movie title.
@@ -108,7 +108,7 @@ public struct MovieCredit: Identifiable, Codable, Equatable, Hashable {
     ///
     public init(
         id: Int,
-        creditId: Int,
+        creditID: String,
         title: String,
         originalTitle: String? = nil,
         originalLanguage: String? = nil,
@@ -122,12 +122,12 @@ public struct MovieCredit: Identifiable, Codable, Equatable, Hashable {
         voteCount: Int? = nil,
         hasVideo: Bool? = nil,
         isAdultOnly: Bool? = nil,
-        department: String?,
-        job: String?,
-        character: String?
+        department: String? = nil,
+        job: String? = nil,
+        character: String? = nil
     ) {
         self.id = id
-        self.creditId = creditId
+        self.creditID = creditID
         self.title = title
         self.originalTitle = originalTitle
         self.originalLanguage = originalLanguage
@@ -152,7 +152,7 @@ extension MovieCredit {
 
     private enum CodingKeys: String, CodingKey {
         case id
-        case creditId
+        case creditID = "creditId"
         case title
         case originalTitle
         case originalLanguage
@@ -176,7 +176,7 @@ extension MovieCredit {
         let container2 = try decoder.container(keyedBy: CodingKeys.self)
 
         self.id = try container.decode(Int.self, forKey: .id)
-        self.creditId = try container.decode(Int.self, forKey: .creditId)
+        self.creditID = try container.decode(String.self, forKey: .creditID)
         self.title = try container.decode(String.self, forKey: .title)
         self.originalTitle = try container.decodeIfPresent(String.self, forKey: .originalTitle)
         self.originalLanguage = try container.decodeIfPresent(String.self, forKey: .originalLanguage)
@@ -201,8 +201,8 @@ extension MovieCredit {
         self.hasVideo = try container.decodeIfPresent(Bool.self, forKey: .hasVideo)
         self.isAdultOnly = try container.decodeIfPresent(Bool.self, forKey: .isAdultOnly)
         self.department = try container.decodeIfPresent(String.self, forKey: .department)
-        self.job = try container.decodeIfPresent(String.self, forKey: .department)
-        self.character = try container.decodeIfPresent(String.self, forKey: .department)
+        self.job = try container.decodeIfPresent(String.self, forKey: .job)
+        self.character = try container.decodeIfPresent(String.self, forKey: .character)
     }
 
 }

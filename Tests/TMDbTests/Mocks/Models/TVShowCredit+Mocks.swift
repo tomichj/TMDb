@@ -5,7 +5,7 @@ extension TVShowCredit {
 
     static func mock(
         id: Int = .randomID,
-        creditId: Int = .randomID,
+        creditID: String = .randomID,
         name: String? = nil,
         originalName: String? = nil,
         originalLanguage: String? = nil,
@@ -25,7 +25,7 @@ extension TVShowCredit {
     ) -> Self {
         .init(
             id: id,
-            creditId: creditId,
+            creditID: creditID,
             name: name ?? "TV Show \(id)",
             originalName: originalName,
             originalLanguage: originalLanguage,
@@ -48,7 +48,7 @@ extension TVShowCredit {
     static var sheHulk: Self {
         .mock(
             id: 92783,
-            creditId: 1234923,
+            creditID: "1234923",
             name: "She-Hulk: Attorney at Law",
             firstAirDate: DateFormatter.theMovieDatabase.date(from: "2022-08-18"),
             posterPath: URL(string: "/hJfI6AGrmr4uSHRccfJuSsapvOb.jpg")!
@@ -58,7 +58,7 @@ extension TVShowCredit {
     static var theSandman: Self {
         .mock(
             id: 90802,
-            creditId: 99938584,
+            creditID: "99938584",
             name: "The Sandman",
             firstAirDate: DateFormatter.theMovieDatabase.date(from: "2022-08-05"),
             posterPath: URL(string: "/q54qEgagGOYCq5D1903eBVMNkbo.jpg")!,
@@ -71,7 +71,7 @@ extension TVShowCredit {
     static var strangerThings: Self {
         .mock(
             id: 66732,
-            creditId: 6673232,
+            creditID: "6673232",
             name: "Stranger Things",
             firstAirDate: DateFormatter.theMovieDatabase.date(from: "2016-07-15"),
             posterPath: URL(string: "/49WJfeN0moxb9IPfGn8AIqMGskD.jpg")!

@@ -5,7 +5,7 @@ extension MovieCredit {
 
     static func mock(
         id: Int = Int.randomID,
-        creditId: Int = Int.randomID,
+        creditID: String = .randomID,
         title: String? = nil,
         originalTitle: String? = nil,
         originalLanguage: String? = "en",
@@ -25,7 +25,7 @@ extension MovieCredit {
     ) -> Self {
         .init(
             id: id,
-            creditId: creditId,
+            creditID: creditID,
             title: title ?? "Movie \(id)",
             originalTitle: originalTitle ?? title ?? "Movie \(id)",
             originalLanguage: originalLanguage,
@@ -48,6 +48,7 @@ extension MovieCredit {
     static var bulletTrain: Self {
         .mock(
             id: 718930,
+            creditID: "123241234",
             title: "Bullet Train",
             overview: "Unlucky assassin Ladybug is determined to do his job peacefully after one too many gigs gone "
             + "off the rails. Fate, however, may have other plans, as Ladybug's latest mission puts him on a collision "
@@ -62,6 +63,7 @@ extension MovieCredit {
     static var thorLoveAndThunder: Self {
         .mock(
             id: 616037,
+            creditID: "623241234",
             title: "Thor: Love and Thunder",
             overview: "After his retirement is interrupted by Gorr the God Butcher, a galactic killer who seeks the "
             + "extinction of the gods, Thor Odinson enlists the help of King Valkyrie, Korg, and ex-girlfriend Jane "
@@ -77,6 +79,7 @@ extension MovieCredit {
     static var jurassicWorldDominion: Self {
         .mock(
             id: 507086,
+            creditID: "923241234",
             title: "Jurassic World Dominion",
             overview: "Four years after Isla Nublar was destroyed, dinosaurs now live—and hunt—alongside humans all "
             + "over the world. This fragile balance will reshape the future and determine, once and for all, whether "
@@ -90,6 +93,7 @@ extension MovieCredit {
     static var topGunMaverick: Self {
         .mock(
             id: 361743,
+            creditID: "523241234",
             title: "Top Gun: Maverick",
             overview: "After more than thirty years of service as one of the Navy’s top aviators, and dodging the "
             + "advancement in rank that would ground him, Pete “Maverick” Mitchell finds himself training a detachment "

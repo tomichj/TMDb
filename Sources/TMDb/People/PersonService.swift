@@ -148,7 +148,7 @@ public final class PersonService {
     ///
     /// - Returns: The matching person's show credits.
     /// 
-    public func knownFor(forPerson personID: Person.ID) async throws -> [Show] {
+    public func knownFor(forPerson personID: Person.ID) async throws -> [ShowCredit] {
         let credits: PersonCombinedCredits
         do {
             credits = try await apiClient.get(endpoint: PeopleEndpoint.combinedCredits(personID: personID))

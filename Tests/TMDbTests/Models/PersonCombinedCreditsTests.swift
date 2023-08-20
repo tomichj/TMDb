@@ -6,7 +6,6 @@ final class PersonCombinedCreditsTests: XCTestCase {
     func testDecodeReturnsPersonCombinedCredits() throws {
         let result = try JSONDecoder.theMovieDatabase
             .decode(PersonCombinedCredits.self, fromResource: "person-combined-credits")
-
         XCTAssertEqual(result.id, personCombinedCredits.id)
         XCTAssertEqual(result.cast, personCombinedCredits.cast)
         XCTAssertEqual(result.crew, personCombinedCredits.crew)
@@ -18,7 +17,7 @@ final class PersonCombinedCreditsTests: XCTestCase {
         cast: [
             .tvShow(TVShowCredit(
                 id: 54,
-                creditId: 12301,
+                creditID: "12301",
                 name: "Growing Pains",
                 originalName: "Growing Pains",
                 originalLanguage: "en",
@@ -30,14 +29,12 @@ final class PersonCombinedCreditsTests: XCTestCase {
                 popularity: 2.883124,
                 voteAverage: 6.2,
                 voteCount: 25,
-                department: nil,
-                job: nil,
                 character: "Tony",
                 episodeCount: 105
             )),
             .movie(MovieCredit(
                 id: 109091,
-                creditId: 123012345,
+                creditID: "123012345",
                 title: "The Counselor",
                 originalTitle: "The Counselor",
                 originalLanguage: "en",
@@ -50,15 +47,13 @@ final class PersonCombinedCreditsTests: XCTestCase {
                 voteCount: 661,
                 hasVideo: false,
                 isAdultOnly: false,
-                department: nil,
-                job: nil,
                 character: "Bertha"
             ))
         ],
         crew: [
             .tvShow(TVShowCredit(
                 id: 69061,
-                creditId: 6099999,
+                creditID: "6099999",
                 name: "The OA",
                 originalName: "The OA",
                 originalLanguage: "en",
@@ -71,12 +66,11 @@ final class PersonCombinedCreditsTests: XCTestCase {
                 voteCount: 121,
                 department: "Production",
                 job: "Executive Producer",
-                character: "",
                 episodeCount: 14
             )),
             .movie(MovieCredit(
                 id: 174349,
-                creditId: 19238473,
+                creditID: "19238473",
                 title: "Big Men",
                 originalTitle: "Big Men",
                 originalLanguage: "en",
@@ -90,8 +84,7 @@ final class PersonCombinedCreditsTests: XCTestCase {
                 hasVideo: false,
                 isAdultOnly: false,
                 department: "Production",
-                job: "Director",
-                character: ""
+                job: "Director"
             ))
         ]
     )
