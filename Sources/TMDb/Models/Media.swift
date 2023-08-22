@@ -34,7 +34,7 @@ public enum Media: Identifiable, Codable, Equatable, Hashable {
     ///
     /// Person.
     ///
-    case person(Person)
+    case person(PersonSearched)
 
 }
 
@@ -62,7 +62,7 @@ extension Media {
             self = .tvShow(try TVShow(from: decoder))
 
         case .person:
-            self = .person(try Person(from: decoder))
+            self = .person(try PersonSearched(from: decoder))
         }
     }
 
