@@ -1,7 +1,7 @@
 import Foundation
 
 ///
-/// A model representing a person.
+/// A model representing a person returned from a Search endpoint.
 ///
 public struct PersonSearched: Identifiable, Codable, Equatable, Hashable {
 
