@@ -5,7 +5,6 @@ final class TVShowTests: XCTestCase {
 
     func testDecodeReturnsTVShow() throws {
         let result = try JSONDecoder.theMovieDatabase.decode(TVShow.self, fromResource: "tv-show")
-
         XCTAssertEqual(result, tvShow)
     }
 
@@ -73,6 +72,7 @@ extension TVShowTests {
                 )
             ],
             status: "Returning Series",
+            tagline: "Winter Is Coming",
             type: "Scripted",
             popularity: 53.516,
             voteAverage: 8.2,

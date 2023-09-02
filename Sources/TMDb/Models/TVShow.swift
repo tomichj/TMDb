@@ -138,6 +138,12 @@ public struct TVShow: Identifiable, Codable, Equatable, Hashable {
     /// Is the TV show only suitable for adults.
     ///
     public let isAdultOnly: Bool?
+    
+    
+    ///
+    /// TV show tagline.
+    ///
+    public let tagline: String?
 
     ///
     /// Creates a TV show object.
@@ -191,6 +197,7 @@ public struct TVShow: Identifiable, Codable, Equatable, Hashable {
         networks: [Network]? = nil,
         productionCompanies: [ProductionCompany]? = nil,
         status: String? = nil,
+        tagline: String? = nil,
         type: String? = nil,
         popularity: Double? = nil,
         voteAverage: Double? = nil,
@@ -218,6 +225,7 @@ public struct TVShow: Identifiable, Codable, Equatable, Hashable {
         self.networks = networks
         self.productionCompanies = productionCompanies
         self.status = status
+        self.tagline = tagline
         self.type = type
         self.popularity = popularity
         self.voteAverage = voteAverage
@@ -249,6 +257,7 @@ extension TVShow {
         case networks
         case productionCompanies
         case status
+        case tagline
         case type
         case popularity
         case voteAverage
@@ -303,6 +312,7 @@ extension TVShow {
         self.networks = try container.decodeIfPresent([Network].self, forKey: .networks)
         self.productionCompanies = try container.decodeIfPresent([ProductionCompany].self, forKey: .productionCompanies)
         self.status = try container.decodeIfPresent(String.self, forKey: .status)
+        self.tagline = try container.decodeIfPresent(String.self, forKey: .tagline)
         self.type = try container.decodeIfPresent(String.self, forKey: .type)
         self.popularity = try container.decodeIfPresent(Double.self, forKey: .popularity)
         self.voteAverage = try container.decodeIfPresent(Double.self, forKey: .voteAverage)
