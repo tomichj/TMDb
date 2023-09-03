@@ -77,7 +77,23 @@ extension TVShowTests {
             popularity: 53.516,
             voteAverage: 8.2,
             voteCount: 4682,
-            isAdultOnly: false
+            isAdultOnly: false,
+            createdBy: [
+                TVShowCreator(
+                    id: 9813,
+                    creditId: "5256c8c219c2956ff604858a",
+                    name: "David Benioff",
+                    gender: 2,
+                    profilePath: URL(string: "/8CuuNIKMzMUL1NKOPv9AqEwM7og.jpg")
+                ),
+                TVShowCreator(
+                    id: 228068,
+                    creditId: "552e611e9251413fea000901",
+                    name: "D. B. Weiss",
+                    gender: 2,
+                    profilePath: URL(string: "/caUAtilEe06OwOjoQY3B7BgpARi.jpg")
+                )
+            ]
         )
     }
     // swiftlint:enable line_length

@@ -115,6 +115,11 @@ public struct TVShow: Identifiable, Codable, Equatable, Hashable {
     public let status: String?
 
     ///
+    /// TV show tagline.
+    ///
+    public let tagline: String?
+
+    ///
     /// TV show type.
     ///
     public let type: String?
@@ -140,11 +145,9 @@ public struct TVShow: Identifiable, Codable, Equatable, Hashable {
     public let isAdultOnly: Bool?
     
     
-    ///
-    /// TV show tagline.
-    ///
-    public let tagline: String?
-
+    public let createdBy: [TVShowCreator]?
+    
+    
     ///
     /// Creates a TV show object.
     ///
@@ -202,7 +205,8 @@ public struct TVShow: Identifiable, Codable, Equatable, Hashable {
         popularity: Double? = nil,
         voteAverage: Double? = nil,
         voteCount: Int? = nil,
-        isAdultOnly: Bool? = nil
+        isAdultOnly: Bool? = nil,
+        createdBy: [TVShowCreator]? = nil
     ) {
         self.id = id
         self.name = name
@@ -231,6 +235,7 @@ public struct TVShow: Identifiable, Codable, Equatable, Hashable {
         self.voteAverage = voteAverage
         self.voteCount = voteCount
         self.isAdultOnly = isAdultOnly
+        self.createdBy = createdBy
     }
 
 }
@@ -265,6 +270,7 @@ extension TVShow {
         case firstAirDate
         case homepageURL = "homepage"
         case isAdultOnly = "adult"
+        case createdBy
     }
 
     public init(from decoder: Decoder) throws {
@@ -318,6 +324,7 @@ extension TVShow {
         self.voteAverage = try container.decodeIfPresent(Double.self, forKey: .voteAverage)
         self.voteCount = try container.decodeIfPresent(Int.self, forKey: .voteCount)
         self.isAdultOnly = try container.decodeIfPresent(Bool.self, forKey: .isAdultOnly)
+        self.createdBy = try container.decodeIfPresent([TVShowCreator].self, forKey: .createdBy)
     }
 
 }
