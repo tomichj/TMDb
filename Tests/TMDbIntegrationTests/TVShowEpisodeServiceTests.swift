@@ -28,6 +28,7 @@ final class TVShowEpisodeServiceTests: XCTestCase {
         XCTAssertEqual(episode.episodeNumber, episodeNumber)
         XCTAssertEqual(episode.seasonNumber, seasonNumber)
         XCTAssertEqual(episode.name, "What is Dead May Never Die")
+        XCTAssertEqual(episode.runtime, 53)
     }
 
     func testImages() async throws {
