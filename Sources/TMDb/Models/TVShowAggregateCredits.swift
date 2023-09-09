@@ -12,4 +12,3 @@ public struct TVShowAggregateCredits: Identifiable, Decodable, Equatable, Hashab
         self.crew = crew
     }
 }
-

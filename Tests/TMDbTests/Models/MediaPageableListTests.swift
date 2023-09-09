@@ -17,8 +17,9 @@ final class MediaPageableListTests: XCTestCase {
         page: 1,
         results: [
             .movie(Movie(id: 1, title: "Fight Club")),
-            .tvShow(TVShow(id: 2, name: "The Mrs Bradley Mysteries")),
+            .tvSeries(TVSeries(id: 2, name: "The Mrs Bradley Mysteries")),
             .person(PersonSearched(id: 51329, name: "Bradley Cooper", gender: .unknown))
+//            .person(Person(id: 51329, name: "Bradley Cooper", gender: .unknown))
         ],
         totalResults: 3,
         totalPages: 1

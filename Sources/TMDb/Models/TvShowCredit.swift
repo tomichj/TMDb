@@ -1,30 +1,28 @@
 import Foundation
 
-///
-/// A model representing a TV show.
-///
+
 public struct TVShowCredit: Identifiable, Codable, Equatable, Hashable {
 
-    public let tvShow: TVShow
+    public let tvSeries: TVSeries
     public let creditID: String
     public let department: String?
     public let job: String?
     public let character: String?
     public let episodeCount: Int?
     
-    public var id: Int { return tvShow.id }
-    var popularity: Double? { return tvShow.popularity }
-    var firstAirDate: Date? { return tvShow.firstAirDate }
+    public var id: Int { return tvSeries.id }
+    var popularity: Double? { return tvSeries.popularity }
+    var firstAirDate: Date? { return tvSeries.firstAirDate }
 
     public init(
-        tvShow: TVShow,
+        tvSeries: TVSeries,
         creditID: String,
         department: String? = nil,
         job: String? = nil,
         character: String? = nil,
         episodeCount: Int? = nil
     ) {
-        self.tvShow = tvShow
+        self.tvSeries = tvSeries
         self.creditID = creditID
         self.department = department
         self.job = job
@@ -53,7 +51,7 @@ public struct TVShowCredit: Identifiable, Codable, Equatable, Hashable {
         character: String? = nil,
         episodeCount: Int? = nil
     ) {
-        self.tvShow = .init(
+        self.tvSeries = .init(
             id: id,
             name: name,
             originalName: originalName,
@@ -93,7 +91,7 @@ extension TVShowCredit {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.tvShow = try TVShow(from: decoder)
+        self.tvSeries = try TVSeries(from: decoder)
         self.creditID = try container.decode(String.self, forKey: .creditID)
         self.department = try container.decodeIfPresent(String.self, forKey: .department)
         self.job = try container.decodeIfPresent(String.self, forKey: .job)

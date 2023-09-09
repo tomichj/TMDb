@@ -1,11 +1,5 @@
-//
-//  File.swift
-//  
-//
-//  Created by Justin Tomich on 9/2/23.
-//
-
 import Foundation
+
 
 public struct TVShowCreator: Identifiable, Codable, Equatable, Hashable {
     

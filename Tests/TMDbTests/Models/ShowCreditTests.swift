@@ -36,7 +36,7 @@ final class ShowCreditTests: XCTestCase {
     }
 
     func testDecodeReturnsTVShow() throws {
-        let result = try JSONDecoder.theMovieDatabase.decode(ShowCredit.self, fromResource: "show-tv-show")
+        let result = try JSONDecoder.theMovieDatabase.decode(ShowCredit.self, fromResource: "show-tv-series")
 
         XCTAssertEqual(result, tvShowShow)
     }
