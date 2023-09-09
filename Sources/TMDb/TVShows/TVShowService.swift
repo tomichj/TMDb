@@ -48,6 +48,29 @@ public final class TVShowService {
     }
 
     ///
+    /// Returns the aggregate cast and crew of a TV show.
+    ///
+    /// [TMDb API - TV Shows: Credits](https://developers.themoviedb.org/3/tv/get-tv-credits)
+    ///
+    /// - Parameters:
+    ///    - tvShowID: The identifier of the TV show.
+    ///
+    /// - Throws: TMDb data error ``TMDbError``.
+    ///
+    /// - Returns: Show credits for the matching TV show.
+    ///
+    public func aggregateCredits(forTVShow tvShowID: TVShow.ID) async throws -> TVShowAggregateCredits {
+        let credits: TVShowAggregateCredits
+        do {
+            credits = try await apiClient.get(endpoint: TVShowsEndpoint.aggregateCredits(tvShowID: tvShowID))
+        } catch let error {
+            throw TMDbError(error: error)
+        }
+
+        return credits
+    }
+
+    ///
     /// Returns the cast and crew of a TV show.
     ///
     /// [TMDb API - TV Shows: Credits](https://developers.themoviedb.org/3/tv/get-tv-credits)

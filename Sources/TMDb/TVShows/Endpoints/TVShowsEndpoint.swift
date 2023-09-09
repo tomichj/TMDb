@@ -3,6 +3,7 @@ import Foundation
 enum TVShowsEndpoint {
 
     case details(tvShowID: TVShow.ID)
+    case aggregateCredits(tvShowID: TVShow.ID)
     case credits(tvShowID: TVShow.ID)
     case reviews(tvShowID: TVShow.ID, page: Int? = nil)
     case images(tvShowID: TVShow.ID, languageCode: String?)
@@ -22,6 +23,11 @@ extension TVShowsEndpoint: Endpoint {
         case .details(let tvShowID):
             return Self.basePath
                 .appendingPathComponent(tvShowID)
+
+        case .aggregateCredits(let tvShowID):
+            return Self.basePath
+                .appendingPathComponent(tvShowID)
+                .appendingPathComponent("aggregate_credits")
 
         case .credits(let tvShowID):
             return Self.basePath
