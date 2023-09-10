@@ -72,6 +72,12 @@ public struct Person: Identifiable, Codable, Equatable, Hashable {
     ///
     public let homepageURL: URL?
 
+
+    // to support Person in search
+    public let originalName: String?
+    public let knownFor: [Media]?
+
+    
     ///
     /// Creates a person object.
     ///
@@ -103,7 +109,9 @@ public struct Person: Identifiable, Codable, Equatable, Hashable {
         profilePath: URL? = nil,
         popularity: Double? = nil,
         imdbID: String? = nil,
-        homepageURL: URL? = nil
+        homepageURL: URL? = nil,
+        originalName: String? = nil,
+        knownFor: [Media]? = nil
     ) {
         self.id = id
         self.name = name
@@ -118,6 +126,8 @@ public struct Person: Identifiable, Codable, Equatable, Hashable {
         self.popularity = popularity
         self.imdbID = imdbID
         self.homepageURL = homepageURL
+        self.originalName = originalName
+        self.knownFor = knownFor
     }
 
 }
@@ -138,6 +148,8 @@ extension Person {
         case popularity
         case imdbID = "imdbId"
         case homepageURL = "homepage"
+        case originalName
+        case knownFor
     }
 
     public init(from decoder: Decoder) throws {
@@ -166,6 +178,8 @@ extension Person {
 
             return try container2.decodeIfPresent(URL.self, forKey: .homepageURL)
         }()
+        self.originalName = try container.decodeIfPresent(String.self, forKey: .originalName)
+        self.knownFor = try container.decodeIfPresent([Media].self, forKey: .knownFor)
     }
 
 }

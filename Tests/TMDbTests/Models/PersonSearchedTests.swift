@@ -4,7 +4,7 @@ import XCTest
 final class PersonSearchedTests: XCTestCase {
 
     func testDecodeReturnsPersonSearched() throws {
-        let result = try JSONDecoder.theMovieDatabase.decode(PersonSearched.self, fromResource: "person-searched")
+        let result = try JSONDecoder.theMovieDatabase.decode(Person.self, fromResource: "person-searched")
         print("\(result.knownFor!)")
 //        XCTAssertEqual(result.countryCode, productionCountry.countryCode)
 //        XCTAssertEqual(result.name, productionCountry.name)

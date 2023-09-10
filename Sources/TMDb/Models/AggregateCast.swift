@@ -1,7 +1,7 @@
 import Foundation
 
 
-public struct TVShowAggregateCrew: Identifiable, Decodable, Equatable, Hashable {
+public struct AggregateCast: Identifiable, Decodable, Equatable, Hashable {
     public let id: Int
     public let isAdultOnly: Bool?
     public let gender: Int?
@@ -10,9 +10,9 @@ public struct TVShowAggregateCrew: Identifiable, Decodable, Equatable, Hashable 
     public let originalName: String?
     public let popularity: Double?
     public let profilePath: URL?
-    public let department: String?
     public let totalEpisodeCount: Int?
-    public let jobs: [Job]?
+    public let order: Int?
+    public let roles: [Role]?
     
     public init(
         id: Int,
@@ -23,9 +23,9 @@ public struct TVShowAggregateCrew: Identifiable, Decodable, Equatable, Hashable 
         originalName: String?,
         popularity: Double?,
         profilePath: URL?,
-        department: String?,
         totalEpisodeCount: Int?,
-        jobs: [Job]?
+        order: Int?,
+        roles: [Role]?
     ) {
         self.id = id
         self.isAdultOnly = isAdultOnly
@@ -35,39 +35,38 @@ public struct TVShowAggregateCrew: Identifiable, Decodable, Equatable, Hashable 
         self.originalName = originalName
         self.popularity = popularity
         self.profilePath = profilePath
-        self.department = department
         self.totalEpisodeCount = totalEpisodeCount
-        self.jobs = jobs
+        self.order = order
+        self.roles = roles
     }
 }
 
-public struct Job {
+public struct Role {
     public var id: String { creditId }
     public let creditId: String
-    public let job: String?
+    public let character: String?
     public let episodeCount: Int?
     
     public init(
         creditId: String,
-        job: String?,
+        character: String?,
         episodeCount: Int?
     ) {
         self.creditId = creditId
-        self.job = job
+        self.character = character
         self.episodeCount = episodeCount
     }
-
 }
 
-extension Job: Identifiable, Codable, Equatable, Hashable {
+extension Role: Identifiable, Codable, Equatable, Hashable {
     private enum CodingKeys: String, CodingKey {
         case creditId
-        case job
+        case character
         case episodeCount
     }
 }
 
-extension TVShowAggregateCrew {
+extension AggregateCast {
     private enum CodingKeys: String, CodingKey {
         case id
         case isAdultOnly = "adult"
@@ -78,8 +77,8 @@ extension TVShowAggregateCrew {
         case popularity
         case profilePath
         case totalEpisodeCount
-        case department
-        case jobs
+        case order
+        case roles
     }
     
     public init(from decoder: Decoder) throws {
@@ -93,9 +92,10 @@ extension TVShowAggregateCrew {
         self.originalName = try container.decodeIfPresent(String.self, forKey: .originalName)
         self.popularity = try container.decodeIfPresent(Double.self, forKey: .popularity)
         self.profilePath = try container.decodeIfPresent(URL.self, forKey: .profilePath)
-        self.department = try container.decodeIfPresent(String.self, forKey: .department)
         self.totalEpisodeCount = try container.decodeIfPresent(Int.self, forKey: .totalEpisodeCount)
-        self.jobs = try container.decodeIfPresent([Job].self, forKey: .jobs)
+        self.order = try container.decodeIfPresent(Int.self, forKey: .order)
+        self.roles = try container.decodeIfPresent([Role].self, forKey: .roles)
     }
 }
+
 

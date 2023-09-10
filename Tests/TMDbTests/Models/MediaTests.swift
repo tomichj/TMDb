@@ -24,8 +24,7 @@ final class MediaTests: XCTestCase {
     private let medias: [Media] = [
         .movie(Movie(id: 1, title: "Fight Club")),
         .tvSeries(TVSeries(id: 2, name: "The Mrs Bradley Mysteries")),
-        .person(PersonSearched(id: 51329, name: "Bradley Cooper", gender: .unknown))
-//        .person(Person(id: 51329, name: "Bradley Cooper", gender: .unknown))
+        .person(Person(id: 51329, name: "Bradley Cooper", gender: .unknown))
     ]
 
 }

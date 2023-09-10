@@ -1,7 +1,7 @@
 import Foundation
 @testable import TMDb
 
-extension TVShowCredit {
+extension TVSeriesCredit {
 
     static func mock(
         id: Int = .randomID,
@@ -82,7 +82,7 @@ extension TVShowCredit {
 
 }
 
-extension Array where Element == TVShowCredit {
+extension Array where Element == TVSeriesCredit {
 
     static var mocks: [Element] {
         [.sheHulk, .theSandman, .strangerThings]

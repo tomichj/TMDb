@@ -52,7 +52,7 @@ public enum ShowCredit: Identifiable, Equatable, Hashable {
     ///
     /// TV show.
     ///
-    case tvShow(TVShowCredit)
+    case tvShow(TVSeriesCredit)
 
 }
 
@@ -76,7 +76,7 @@ extension ShowCredit: Decodable {
             self = .movie(try MovieCredit(from: decoder))
 
         case .tvShow:
-            self = .tvShow(try TVShowCredit(from: decoder))
+            self = .tvShow(try TVSeriesCredit(from: decoder))
         }
     }
 

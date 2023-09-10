@@ -83,18 +83,18 @@ extension TVSeriesTests {
             voteCount: 4682,
             isAdultOnly: false,
             createdBy: [
-                TVShowCreator(
+                CrewMember(
                     id: 9813,
-                    creditId: "5256c8c219c2956ff604858a",
+                    creditID: "5256c8c219c2956ff604858a",
                     name: "David Benioff",
-                    gender: 2,
+                    gender: Gender.male,
                     profilePath: URL(string: "/8CuuNIKMzMUL1NKOPv9AqEwM7og.jpg")
                 ),
-                TVShowCreator(
+                CrewMember(
                     id: 228068,
-                    creditId: "552e611e9251413fea000901",
+                    creditID: "552e611e9251413fea000901",
                     name: "D. B. Weiss",
-                    gender: 2,
+                    gender: Gender.male,
                     profilePath: URL(string: "/caUAtilEe06OwOjoQY3B7BgpARi.jpg")
                 )
             ]

@@ -16,7 +16,7 @@ final class PersonCombinedCreditsTests: XCTestCase {
         id: 287,
         cast: [
 //            .tvSeries(TVSeries(
-            .tvShow(TVShowCredit(
+            .tvShow(TVSeriesCredit(
                 id: 54,
                 creditID: "12301",
                 name: "Growing Pains",
@@ -53,7 +53,7 @@ final class PersonCombinedCreditsTests: XCTestCase {
         ],
         crew: [
 //            .tvSeries(TVSeries(
-            .tvShow(TVShowCredit(
+            .tvShow(TVSeriesCredit(
                 id: 69061,
                 creditID: "6099999",
                 name: "The OA",

@@ -1,5 +1,6 @@
 import Foundation
 
+
 public struct MovieCredit: Identifiable, Codable, Equatable, Hashable {
 
     public let movie: Movie

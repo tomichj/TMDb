@@ -145,7 +145,7 @@ public struct TVSeries: Identifiable, Codable, Equatable, Hashable {
     public let isAdultOnly: Bool?
     
     
-    public let createdBy: [TVShowCreator]?
+    public let createdBy: [CrewMember]?
     
     
     ///
@@ -207,7 +207,7 @@ public struct TVSeries: Identifiable, Codable, Equatable, Hashable {
         voteAverage: Double? = nil,
         voteCount: Int? = nil,
         isAdultOnly: Bool? = nil,
-        createdBy: [TVShowCreator]? = nil
+        createdBy: [CrewMember]? = nil
     ) {
         self.id = id
         self.name = name
@@ -325,7 +325,7 @@ extension TVSeries {
         self.voteAverage = try container.decodeIfPresent(Double.self, forKey: .voteAverage)
         self.voteCount = try container.decodeIfPresent(Int.self, forKey: .voteCount)
         self.isAdultOnly = try container.decodeIfPresent(Bool.self, forKey: .isAdultOnly)
-        self.createdBy = try container.decodeIfPresent([TVShowCreator].self, forKey: .createdBy)
+        self.createdBy = try container.decodeIfPresent([CrewMember].self, forKey: .createdBy)
     }
 
 }

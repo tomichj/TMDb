@@ -1,7 +1,7 @@
 import Foundation
 
 
-public struct TVShowCredit: Identifiable, Codable, Equatable, Hashable {
+public struct TVSeriesCredit: Identifiable, Codable, Equatable, Hashable {
 
     public let tvSeries: TVSeries
     public let creditID: String
@@ -78,7 +78,7 @@ public struct TVShowCredit: Identifiable, Codable, Equatable, Hashable {
 
 }
 
-extension TVShowCredit {
+extension TVSeriesCredit {
 
     private enum CodingKeys: String, CodingKey {
         case creditID = "creditId"

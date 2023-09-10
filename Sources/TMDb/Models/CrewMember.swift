@@ -23,12 +23,12 @@ public struct CrewMember: Identifiable, Codable, Equatable, Hashable {
     ///
     /// Crew member's job.
     ///
-    public let job: String
+    public let job: String?
 
     ///
     /// Crew member's department.
     ///
-    public let department: String
+    public let department: String?
 
     ///
     /// Crew member's gender.
@@ -58,8 +58,8 @@ public struct CrewMember: Identifiable, Codable, Equatable, Hashable {
         id: Int,
         creditID: String,
         name: String,
-        job: String,
-        department: String,
+        job: String? = nil,
+        department: String? = nil,
         gender: Gender? = nil,
         profilePath: URL? = nil
     ) {

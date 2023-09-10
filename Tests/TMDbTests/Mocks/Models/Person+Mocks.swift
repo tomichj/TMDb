@@ -16,7 +16,9 @@ extension Person {
         profilePath: URL? = .randomImagePath,
         popularity: Double? = Double.random(in: 1...10),
         imdbID: String? = .randomString,
-        homepageURL: URL? = .randomWebSite
+        homepageURL: URL? = .randomWebSite,
+        originalName: String? = .randomString,
+        knownFor: [Media]? = nil
     ) -> Self {
         .init(
             id: id,
@@ -31,7 +33,9 @@ extension Person {
             profilePath: profilePath,
             popularity: popularity,
             imdbID: imdbID,
-            homepageURL: homepageURL
+            homepageURL: homepageURL,
+            originalName: originalName,
+            knownFor: knownFor
         )
     }
 
