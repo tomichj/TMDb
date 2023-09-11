@@ -104,7 +104,7 @@ public struct Person: Identifiable, Codable, Equatable, Hashable {
         biography: String? = nil,
         birthday: Date? = nil,
         deathday: Date? = nil,
-        gender: Gender,
+        gender: Gender = Gender.unknown,
         placeOfBirth: String? = nil,
         profilePath: URL? = nil,
         popularity: Double? = nil,
