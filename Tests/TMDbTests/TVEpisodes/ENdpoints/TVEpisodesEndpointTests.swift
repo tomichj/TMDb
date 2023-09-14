@@ -27,4 +27,12 @@ final class TVEpisodesEndpointTests: XCTestCase {
         XCTAssertEqual(url, expectedURL)
     }
 
+    func testTVEpisodeCreditsEndpointReturnsURL() throws {
+        let expectedURL = try XCTUnwrap(URL(string: "/tv/1/season/2/episode/3/credits"))
+
+        let url = TVEpisodesEndpoint.credits(tvSeriesID: 1, seasonNumber: 2, episodeNumber: 3).path
+
+        XCTAssertEqual(url, expectedURL)
+    }
+
 }
