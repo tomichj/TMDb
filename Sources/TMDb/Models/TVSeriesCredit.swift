@@ -11,8 +11,8 @@ public struct TVSeriesCredit: Identifiable, Codable, Equatable, Hashable {
     public let episodeCount: Int?
     
     public var id: Int { return tvSeries.id }
-    var popularity: Double? { return tvSeries.popularity }
-    var firstAirDate: Date? { return tvSeries.firstAirDate }
+    public var popularity: Double? { return tvSeries.popularity }
+    public var firstAirDate: Date? { return tvSeries.firstAirDate }
 
     public init(
         tvSeries: TVSeries,

@@ -21,7 +21,7 @@ public enum ShowCredit: Identifiable, Equatable, Hashable {
     ///
     /// Show's popularity.
     ///
-    var popularity: Double? {
+    public var popularity: Double? {
         switch self {
         case .movie(let movie):
             return movie.popularity
@@ -34,7 +34,7 @@ public enum ShowCredit: Identifiable, Equatable, Hashable {
     ///
     /// Show's release or first air date.
     ///
-    var date: Date? {
+    public var date: Date? {
         switch self {
         case .movie(let movie):
             return movie.releaseDate

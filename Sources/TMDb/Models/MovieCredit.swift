@@ -10,8 +10,8 @@ public struct MovieCredit: Identifiable, Codable, Equatable, Hashable {
     public let character: String?
 
     public var id: Int { return movie.id }
-    var popularity: Double? { return movie.popularity }
-    var releaseDate: Date? { return movie.releaseDate }
+    public var popularity: Double? { return movie.popularity }
+    public var releaseDate: Date? { return movie.releaseDate }
     
     public init(
         movie: Movie,
