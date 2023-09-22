@@ -47,17 +47,6 @@ public final class TVSeriesService {
         return tvSeries
     }
 
-    public func aggregateCredits(forTVSeries id: TVSeries.ID) async throws -> AggregateCredits {
-        let credits: AggregateCredits
-        do {
-            credits = try await apiClient.get(endpoint: TVSeriesEndpoint.aggregateCredits(tvSeriesID: id))
-        } catch let error {
-            throw TMDbError(error: error)
-        }
-
-        return credits
-    }
-
     ///
     /// Returns the cast and crew of a TV series.
     ///
@@ -241,6 +230,30 @@ public final class TVSeriesService {
         }
 
         return tvSeriesList
+    }
+    
+    
+    public func aggregateCredits(forTVSeries id: TVSeries.ID) async throws -> AggregateCredits {
+        let credits: AggregateCredits
+        do {
+            credits = try await apiClient.get(endpoint: TVSeriesEndpoint.aggregateCredits(tvSeriesID: id))
+        } catch let error {
+            throw TMDbError(error: error)
+        }
+
+        return credits
+    }
+
+    
+    public func contentRatings(forTVSeries id: TVSeries.ID) async throws -> ContentRatings {
+        let contentRatings: ContentRatings
+        do {
+            contentRatings = try await apiClient.get(endpoint: TVSeriesEndpoint.aggregateCredits(tvSeriesID: id))
+        } catch let error {
+            throw TMDbError(error: error)
+        }
+
+        return contentRatings
     }
 
 }

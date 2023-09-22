@@ -3,7 +3,6 @@ import Foundation
 enum TVSeriesEndpoint {
 
     case details(tvSeriesID: TVSeries.ID)
-    case aggregateCredits(tvSeriesID: TVSeries.ID)
     case credits(tvSeriesID: TVSeries.ID)
     case reviews(tvSeriesID: TVSeries.ID, page: Int? = nil)
     case images(tvSeriesID: TVSeries.ID, languageCode: String?)
@@ -11,6 +10,8 @@ enum TVSeriesEndpoint {
     case recommendations(tvSeriesID: TVSeries.ID, page: Int? = nil)
     case similar(tvSeriesID: TVSeries.ID, page: Int? = nil)
     case popular(page: Int? = nil)
+    case aggregateCredits(tvSeriesID: TVSeries.ID)
+    case contentRatings(tvSeriesID: TVSeries.ID)
 
 }
 
@@ -23,11 +24,6 @@ extension TVSeriesEndpoint: Endpoint {
         case .details(let tvSeriesID):
             return Self.basePath
                 .appendingPathComponent(tvSeriesID)
-
-        case .aggregateCredits(let tvShowID):
-            return Self.basePath
-                .appendingPathComponent(tvShowID)
-                .appendingPathComponent("aggregate_credits")
 
         case .credits(let tvSeriesID):
             return Self.basePath
@@ -68,6 +64,16 @@ extension TVSeriesEndpoint: Endpoint {
             return Self.basePath
                 .appendingPathComponent("popular")
                 .appendingPage(page)
+
+        case .aggregateCredits(let tvShowID):
+            return Self.basePath
+                .appendingPathComponent(tvShowID)
+                .appendingPathComponent("aggregate_credits")
+
+        case .contentRatings(let tvShowID):
+            return Self.basePath
+                .appendingPathComponent(tvShowID)
+                .appendingPathComponent("content_ratings")
         }
     }
 
