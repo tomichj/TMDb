@@ -248,7 +248,7 @@ public final class TVSeriesService {
     public func contentRatings(forTVSeries id: TVSeries.ID) async throws -> ContentRatings {
         let contentRatings: ContentRatings
         do {
-            contentRatings = try await apiClient.get(endpoint: TVSeriesEndpoint.aggregateCredits(tvSeriesID: id))
+            contentRatings = try await apiClient.get(endpoint: TVSeriesEndpoint.contentRatings(tvSeriesID: id))
         } catch let error {
             throw TMDbError(error: error)
         }
