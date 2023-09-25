@@ -12,7 +12,7 @@ public struct AggregateCast: Identifiable, Decodable, Equatable, Hashable {
     public let profilePath: URL?
     public let totalEpisodeCount: Int?
     public let order: Int
-    public let roles: [Role]?
+    public let roles: [Role]
     
     public init(
         id: Int,
@@ -25,7 +25,7 @@ public struct AggregateCast: Identifiable, Decodable, Equatable, Hashable {
         profilePath: URL?,
         totalEpisodeCount: Int?,
         order: Int,
-        roles: [Role]?
+        roles: [Role]
     ) {
         self.id = id
         self.isAdultOnly = isAdultOnly
