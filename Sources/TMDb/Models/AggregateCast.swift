@@ -6,7 +6,7 @@ public struct AggregateCast: Identifiable, Decodable, Equatable, Hashable {
     public let isAdultOnly: Bool?
     public let gender: Int?
     public let knownForDepartment: String?
-    public let name: String?
+    public let name: String
     public let originalName: String?
     public let popularity: Double?
     public let profilePath: URL?
@@ -19,7 +19,7 @@ public struct AggregateCast: Identifiable, Decodable, Equatable, Hashable {
         isAdultOnly: Bool?,
         gender: Int?,
         knownForDepartment: String?,
-        name: String?,
+        name: String,
         originalName: String?,
         popularity: Double?,
         profilePath: URL?,
@@ -88,7 +88,7 @@ extension AggregateCast {
         self.isAdultOnly = try container.decodeIfPresent(Bool.self, forKey: .isAdultOnly)
         self.gender = try container.decodeIfPresent(Int.self, forKey: .gender)
         self.knownForDepartment = try container.decodeIfPresent(String.self, forKey: .knownForDepartment)
-        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+        self.name = try container.decode(String.self, forKey: .name)
         self.originalName = try container.decodeIfPresent(String.self, forKey: .originalName)
         self.popularity = try container.decodeIfPresent(Double.self, forKey: .popularity)
         self.profilePath = try container.decodeIfPresent(URL.self, forKey: .profilePath)
