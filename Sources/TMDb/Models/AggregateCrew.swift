@@ -12,7 +12,7 @@ public struct AggregateCrew: Identifiable, Decodable, Equatable, Hashable {
     public let profilePath: URL?
     public let department: String?
     public let totalEpisodeCount: Int?
-    public let jobs: [Job]?
+    public let jobs: [Job]
     
     public init(
         id: Int,
@@ -25,7 +25,7 @@ public struct AggregateCrew: Identifiable, Decodable, Equatable, Hashable {
         profilePath: URL?,
         department: String?,
         totalEpisodeCount: Int?,
-        jobs: [Job]?
+        jobs: [Job]
     ) {
         self.id = id
         self.isAdultOnly = isAdultOnly
@@ -44,13 +44,13 @@ public struct AggregateCrew: Identifiable, Decodable, Equatable, Hashable {
 public struct Job {
     public var id: String { creditId }
     public let creditId: String
-    public let job: String?
-    public let episodeCount: Int?
+    public let job: String
+    public let episodeCount: Int
     
     public init(
         creditId: String,
-        job: String?,
-        episodeCount: Int?
+        job: String,
+        episodeCount: Int
     ) {
         self.creditId = creditId
         self.job = job
@@ -95,7 +95,7 @@ extension AggregateCrew {
         self.profilePath = try container.decodeIfPresent(URL.self, forKey: .profilePath)
         self.department = try container.decodeIfPresent(String.self, forKey: .department)
         self.totalEpisodeCount = try container.decodeIfPresent(Int.self, forKey: .totalEpisodeCount)
-        self.jobs = try container.decodeIfPresent([Job].self, forKey: .jobs)
+        self.jobs = try container.decode([Job].self, forKey: .jobs)
     }
 }
 
