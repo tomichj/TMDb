@@ -11,7 +11,7 @@ public struct AggregateCast: Identifiable, Decodable, Equatable, Hashable {
     public let popularity: Double?
     public let profilePath: URL?
     public let totalEpisodeCount: Int?
-    public let order: Int?
+    public let order: Int
     public let roles: [Role]?
     
     public init(
@@ -24,7 +24,7 @@ public struct AggregateCast: Identifiable, Decodable, Equatable, Hashable {
         popularity: Double?,
         profilePath: URL?,
         totalEpisodeCount: Int?,
-        order: Int?,
+        order: Int,
         roles: [Role]?
     ) {
         self.id = id
@@ -93,7 +93,7 @@ extension AggregateCast {
         self.popularity = try container.decodeIfPresent(Double.self, forKey: .popularity)
         self.profilePath = try container.decodeIfPresent(URL.self, forKey: .profilePath)
         self.totalEpisodeCount = try container.decodeIfPresent(Int.self, forKey: .totalEpisodeCount)
-        self.order = try container.decodeIfPresent(Int.self, forKey: .order)
+        self.order = try container.decode(Int.self, forKey: .order)
         self.roles = try container.decodeIfPresent([Role].self, forKey: .roles)
     }
 }
