@@ -44,13 +44,13 @@ public struct AggregateCast: Identifiable, Decodable, Equatable, Hashable {
 public struct Role {
     public var id: String { creditId }
     public let creditId: String
-    public let character: String?
-    public let episodeCount: Int?
+    public let character: String
+    public let episodeCount: Int
     
     public init(
         creditId: String,
-        character: String?,
-        episodeCount: Int?
+        character: String,
+        episodeCount: Int
     ) {
         self.creditId = creditId
         self.character = character
