@@ -94,7 +94,7 @@ extension AggregateCast {
         self.profilePath = try container.decodeIfPresent(URL.self, forKey: .profilePath)
         self.totalEpisodeCount = try container.decodeIfPresent(Int.self, forKey: .totalEpisodeCount)
         self.order = try container.decode(Int.self, forKey: .order)
-        self.roles = try container.decodeIfPresent([Role].self, forKey: .roles)
+        self.roles = try container.decode([Role].self, forKey: .roles)
     }
 }
 
