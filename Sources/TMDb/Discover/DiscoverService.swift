@@ -38,11 +38,11 @@ public final class DiscoverService {
     /// - Returns: Matching movies as a pageable list.
     /// 
     public func movies(sortedBy: MovieSort? = nil, withPeople people: [Person.ID]? = nil,
-                       page: Int? = nil) async throws -> MoviePageableList {
+                       withGenres genres: [Genre.ID]? = nil, page: Int? = nil) async throws -> MoviePageableList {
         let movieList: MoviePageableList
         do {
             movieList = try await apiClient.get(
-                endpoint: DiscoverEndpoint.movies(sortedBy: sortedBy, people: people, page: page)
+                endpoint: DiscoverEndpoint.movies(sortedBy: sortedBy, people: people, genres: genres, page: page)
             )
         } catch let error {
             throw TMDbError(error: error)

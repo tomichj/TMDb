@@ -2,7 +2,7 @@ import Foundation
 
 enum DiscoverEndpoint {
 
-    case movies(sortedBy: MovieSort? = nil, people: [Person.ID]? = nil, page: Int? = nil)
+    case movies(sortedBy: MovieSort? = nil, people: [Person.ID]? = nil, genres: [Genre.ID]? = nil, page: Int? = nil)
     case tvSeries(sortedBy: TVSeriesSort? = nil, page: Int? = nil)
 
 }
@@ -13,11 +13,12 @@ extension DiscoverEndpoint: Endpoint {
 
     var path: URL {
         switch self {
-        case .movies(let sortedBy, let people, let page):
+        case .movies(let sortedBy, let people, let genres, let page):
             return Self.basePath
                 .appendingPathComponent("movie")
                 .appendingSortBy(sortedBy)
                 .appendingWithPeople(people)
+                .appendingWithGenres(genres)
                 .appendingPage(page)
 
         case .tvSeries(let sortedBy, let page):
