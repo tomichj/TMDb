@@ -44,6 +44,7 @@ public struct TVSeason: Identifiable, Codable, Equatable, Hashable {
     
 
     public let voteAverage: Double?
+    public let episodeCount: Int?
 
 
     ///
@@ -66,8 +67,8 @@ public struct TVSeason: Identifiable, Codable, Equatable, Hashable {
         airDate: Date? = nil,
         posterPath: URL? = nil,
         episodes: [TVEpisode]? = nil,
-        voteAverage: Double? = nil
-
+        voteAverage: Double? = nil,
+        episodeCount: Int? = nil
     ) {
         self.id = id
         self.name = name
@@ -77,6 +78,7 @@ public struct TVSeason: Identifiable, Codable, Equatable, Hashable {
         self.posterPath = posterPath
         self.episodes = episodes
         self.voteAverage = voteAverage
+        self.episodeCount = episodeCount
     }
 
 }
