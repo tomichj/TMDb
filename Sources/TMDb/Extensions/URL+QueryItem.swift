@@ -29,6 +29,7 @@ extension URL {
         static let withPeople = "with_people"
         static let withGenres = "with_genres"
         static let withRegionCode = "region"
+        static let withOriginCountry = "with_origin_country"
     }
 
     func appendingAPIKey(_ apiKey: String) -> Self {
@@ -124,5 +125,13 @@ extension URL {
         }
         
         return appendingQueryItem(name: QueryItemName.withRegionCode, value: regionCode)
+    }
+    
+    func appendingWithOriginCountry(_ withOriginCountry: String?) -> Self {
+        guard let withOriginCountry else {
+            return self
+        }
+        
+        return appendingQueryItem(name: QueryItemName.withOriginCountry, value: withOriginCountry)
     }
 }

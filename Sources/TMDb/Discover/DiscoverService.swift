@@ -67,10 +67,10 @@ public final class DiscoverService {
     ///
     /// - Returns: Matching TV series as a pageable list.
     ///
-    public func tvSeries(sortedBy: TVSeriesSort? = nil, withGenres genres: [Genre.ID]? = nil, regionCode: String? = nil, page: Int? = nil) async throws -> TVSeriesPageableList {
+    public func tvSeries(sortedBy: TVSeriesSort? = nil, withGenres genres: [Genre.ID]? = nil, withOriginCountry: String? = nil, page: Int? = nil) async throws -> TVSeriesPageableList {
         let tvSeriesList: TVSeriesPageableList
         do {
-            tvSeriesList = try await apiClient.get(endpoint: DiscoverEndpoint.tvSeries(sortedBy: sortedBy, genres: genres, regionCode: regionCode, page: page))
+            tvSeriesList = try await apiClient.get(endpoint: DiscoverEndpoint.tvSeries(sortedBy: sortedBy, genres: genres, withOriginCountry: withOriginCountry, page: page))
         } catch let error {
             throw TMDbError(error: error)
         }
