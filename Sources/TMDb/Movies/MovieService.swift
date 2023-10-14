@@ -291,10 +291,10 @@ public final class MovieService {
     ///
     /// - Returns: Upcoming movies as a pageable list.
     /// 
-    public func upcoming(page: Int? = nil) async throws -> MoviePageableList {
+    public func upcoming(regionCode: String? = nil, page: Int? = nil) async throws -> MoviePageableList {
         let movieList: MoviePageableList
         do {
-            movieList = try await apiClient.get(endpoint: MoviesEndpoint.upcoming(page: page))
+            movieList = try await apiClient.get(endpoint: MoviesEndpoint.upcoming(regionCode: regionCode, page: page))
         } catch let error {
             throw TMDbError(error: error)
         }
