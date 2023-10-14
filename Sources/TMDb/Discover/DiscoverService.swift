@@ -31,18 +31,19 @@ public final class DiscoverService {
     /// - Parameters:
     ///    - sortedBy: How results should be sorted.
     ///    - people: A list of Person identifiers which to return only movies they have appeared in.
+    ///    - regionCode: 
     ///    - page: The page of results to return.
     ///
     /// - Throws: TMDb error ``TMDbError``.
     ///
     /// - Returns: Matching movies as a pageable list.
-    /// 
+    ///
     public func movies(sortedBy: MovieSort? = nil, withPeople people: [Person.ID]? = nil,
-                       withGenres genres: [Genre.ID]? = nil, page: Int? = nil) async throws -> MoviePageableList {
+                       withGenres genres: [Genre.ID]? = nil, regionCode: String? = nil, page: Int? = nil) async throws -> MoviePageableList {
         let movieList: MoviePageableList
         do {
             movieList = try await apiClient.get(
-                endpoint: DiscoverEndpoint.movies(sortedBy: sortedBy, people: people, genres: genres, page: page)
+                endpoint: DiscoverEndpoint.movies(sortedBy: sortedBy, people: people, genres: genres, regionCode: regionCode, page: page)
             )
         } catch let error {
             throw TMDbError(error: error)
@@ -66,10 +67,10 @@ public final class DiscoverService {
     ///
     /// - Returns: Matching TV series as a pageable list.
     ///
-    public func tvSeries(sortedBy: TVSeriesSort? = nil, withGenres genres: [Genre.ID]? = nil, page: Int? = nil) async throws -> TVSeriesPageableList {
+    public func tvSeries(sortedBy: TVSeriesSort? = nil, withGenres genres: [Genre.ID]? = nil, regionCode: String? = nil, page: Int? = nil) async throws -> TVSeriesPageableList {
         let tvSeriesList: TVSeriesPageableList
         do {
-            tvSeriesList = try await apiClient.get(endpoint: DiscoverEndpoint.tvSeries(sortedBy: sortedBy, genres: genres, page: page))
+            tvSeriesList = try await apiClient.get(endpoint: DiscoverEndpoint.tvSeries(sortedBy: sortedBy, genres: genres, regionCode: regionCode, page: page))
         } catch let error {
             throw TMDbError(error: error)
         }
