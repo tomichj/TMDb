@@ -256,4 +256,8 @@ public final class TVSeriesService {
         return contentRatings
     }
 
+    public func externalIDs(forTVSeries id: TVSeries.ID) async throws -> TVSeriesExternalIDs {
+        try await apiClient.get(endpoint: TVSeriesEndpoint.externalIDs(tvSeriesID: id))
+    }
+
 }

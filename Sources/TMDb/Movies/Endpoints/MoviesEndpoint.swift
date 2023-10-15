@@ -14,6 +14,7 @@ enum MoviesEndpoint {
     case topRated(page: Int? = nil)
     case upcoming(regionCode: String? = nil, page: Int? = nil)
     case releaseDates(movieID: Movie.ID)
+    case externalIDs(movieID: Movie.ID)
 
 }
 
@@ -87,6 +88,12 @@ extension MoviesEndpoint: Endpoint {
             return Self.basePath
                 .appendingPathComponent(movieID)
                 .appendingPathComponent("release_dates")
+            
+        case .externalIDs(let movieID):
+            return Self.basePath
+                .appendingPathComponent(movieID)
+                .appendingPathComponent("external_ids")
+
         }
     }
 
