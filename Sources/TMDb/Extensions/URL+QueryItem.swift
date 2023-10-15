@@ -30,6 +30,7 @@ extension URL {
         static let withGenres = "with_genres"
         static let withRegionCode = "region"
         static let withOriginCountry = "with_origin_country"
+        static let withAirDateGTE = "air_date.gte"
     }
 
     func appendingAPIKey(_ apiKey: String) -> Self {
@@ -133,5 +134,16 @@ extension URL {
         }
         
         return appendingQueryItem(name: QueryItemName.withOriginCountry, value: withOriginCountry)
+    }
+
+    func appendingAirDateGTE(_ airDateGTE: Date?) -> Self {
+        guard let airDateGTE else {
+            return self
+        }
+        
+        // turn Date into String yyyy-MM-dd
+        let airDateGTEString = DateFormatter.theMovieDatabase.string(from: airDateGTE)
+        
+        return appendingQueryItem(name: QueryItemName.withAirDateGTE, value: airDateGTEString)
     }
 }
