@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Justin Tomich on 10/15/23.
-//
-
 import Foundation
 
 public struct MovieExternalIDs: Identifiable, Codable, Equatable, Hashable {
@@ -35,11 +28,11 @@ public struct MovieExternalIDs: Identifiable, Codable, Equatable, Hashable {
 extension MovieExternalIDs {
     private enum CodingKeys: String, CodingKey {
         case id
-        case imdbID
-        case wikidataID
-        case facebookID
-        case instagramID
-        case twitterID
+        case imdbID = "imdb_id"
+        case wikidataID = "wikidata_id"
+        case facebookID = "facebook_id"
+        case instagramID = "instagram_id"
+        case twitterID = "twitter_id"
     }
     
     public init(from decoder: Decoder) throws {

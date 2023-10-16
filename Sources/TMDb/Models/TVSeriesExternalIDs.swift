@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Justin Tomich on 10/15/23.
-//
-
 import Foundation
 
 public struct TVSeriesExternalIDs: Identifiable, Codable, Equatable, Hashable {
@@ -51,15 +44,16 @@ public struct TVSeriesExternalIDs: Identifiable, Codable, Equatable, Hashable {
 extension TVSeriesExternalIDs {
     private enum CodingKeys: String, CodingKey {
         case id
-        case imdbID
-        case freebaseMid
-        case freebaseID
-        case tvdbID
-        case tvrageID
-        case wikidataID
-        case facebookID
-        case instagramID
-        case twitterID
+        case imdbID = "imdb_id"
+        case freebaseMid = "freebase_mid"
+        case freebaseID = "freebase_id"
+        case tvdbID = "tvdb_id"
+        case tvrageID = "tvrage_id"
+        case wikidataID = "wikidata_id"
+        case facebookID = "facebook_id"
+        case instagramID = "instagram_id"
+        case twitterID = "twitter_id"
+
     }
     
     public init(from decoder: Decoder) throws {
