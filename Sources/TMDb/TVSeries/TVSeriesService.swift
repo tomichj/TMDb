@@ -257,7 +257,14 @@ public final class TVSeriesService {
     }
 
     public func externalIDs(forTVSeries id: TVSeries.ID) async throws -> TVSeriesExternalIDs {
-        try await apiClient.get(endpoint: TVSeriesEndpoint.externalIDs(tvSeriesID: id))
+        let externalIDs: TVSeriesExternalIDs
+        do {
+            externalIDs = try await apiClient.get(endpoint: TVSeriesEndpoint.externalIDs(tvSeriesID: id))
+        } catch let error {
+            throw TMDbError(error: error)
+        }
+        
+        return externalIDs
     }
 
 }

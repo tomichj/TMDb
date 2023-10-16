@@ -308,7 +308,13 @@ public final class MovieService {
     }
 
     public func externalIDs(forMovie movieID: Movie.ID) async throws -> MovieExternalIDs {
-        try await apiClient.get(endpoint: MoviesEndpoint.externalIDs(movieID: movieID))
+        let externalIDs: MovieExternalIDs
+        do {
+            externalIDs = try await apiClient.get(endpoint: MoviesEndpoint.externalIDs(movieID: movieID))
+        } catch let error {
+            throw TMDbError(error: error)
+        }
+        return externalIDs
     }
     
 }
