@@ -90,7 +90,7 @@ final class TVSeriesServiceTests: XCTestCase {
         let externalIds = try await tvSeriesService.externalIDs(forTVSeries: tvSeriesID)
         print(String(describing: externalIds))
         
-        XCTAssertFalse(externalIds.imdbId == nil)
+        XCTAssertTrue(externalIds.imdbId != nil)
     }
 
 }

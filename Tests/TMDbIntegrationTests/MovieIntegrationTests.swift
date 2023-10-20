@@ -107,8 +107,6 @@ final class MovieIntegrationTests: XCTestCase {
         let movieID = 575264
         
         let movieExternalIdList: MovieExternalIdList = try await movieService.externalIDs(forMovie: movieID)
-        print(String(describing: movieExternalIdList))
         
-        XCTAssertFalse(movieExternalIdList.imdbId == nil)
-    }
+        XCTAssertTrue(movieExternalIdList.imdbId != nil)    }
 }

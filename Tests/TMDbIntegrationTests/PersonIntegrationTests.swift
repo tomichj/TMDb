@@ -78,4 +78,12 @@ final class PersonIntegrationTests: XCTestCase {
         XCTAssertFalse(personList.results.isEmpty)
     }
 
+    func testExternalIDs() async throws {
+        let personID = 500
+
+        let externalIDs = try await personService.externalIDs(forPerson: personID)
+
+        XCTAssertTrue(externalIDs.imdbId != nil)
+    }
+
 }

@@ -188,5 +188,16 @@ public final class PersonService {
 
         return personList
     }
+    
+    public func externalIDs(forPerson personID: Person.ID) async throws -> PersonExternalIdList {
+        let externalIDs: PersonExternalIdList
+        do {
+            externalIDs = try await apiClient.get(endpoint: PeopleEndpoint.externalIDs(personID: personID))
+        } catch let error {
+            throw TMDbError(error: error)
+        }
+        
+        return externalIDs
+    }
 
 }
