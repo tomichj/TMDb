@@ -84,4 +84,13 @@ final class TVSeriesServiceTests: XCTestCase {
         XCTAssertFalse(tvSeriesList.results.isEmpty)
     }
 
+    func testExternalIDs() async throws {
+        let tvSeriesID = 76479
+        
+        let externalIds = try await tvSeriesService.externalIDs(forTVSeries: tvSeriesID)
+        print(String(describing: externalIds))
+        
+        XCTAssertFalse(externalIds.imdbId == nil)
+    }
+
 }

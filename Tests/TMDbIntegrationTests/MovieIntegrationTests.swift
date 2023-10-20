@@ -103,4 +103,12 @@ final class MovieIntegrationTests: XCTestCase {
         XCTAssertFalse(movieList.results.isEmpty)
     }
 
+    func testExternalIDs() async throws {
+        let movieID = 575264
+        
+        let movieExternalIdList: MovieExternalIdList = try await movieService.externalIDs(forMovie: movieID)
+        print(String(describing: movieExternalIdList))
+        
+        XCTAssertFalse(movieExternalIdList.imdbId == nil)
+    }
 }

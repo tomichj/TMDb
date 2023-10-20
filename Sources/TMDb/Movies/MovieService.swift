@@ -307,8 +307,8 @@ public final class MovieService {
         try await apiClient.get(endpoint: MoviesEndpoint.releaseDates(movieID: movieID))
     }
 
-    public func externalIDs(forMovie movieID: Movie.ID) async throws -> MovieExternalIDs {
-        let externalIDs: MovieExternalIDs
+    public func externalIDs(forMovie movieID: Movie.ID) async throws -> MovieExternalIdList {
+        let externalIDs: MovieExternalIdList
         do {
             externalIDs = try await apiClient.get(endpoint: MoviesEndpoint.externalIDs(movieID: movieID))
         } catch let error {
