@@ -38,7 +38,8 @@ final class TVEpisodeServiceTests: XCTestCase {
 
         let imageCollection = try await tvEpisodeService.images(forEpisode: episodeNumber, inSeason: seasonNumber,
                                                                 inTVSeries: tvSeriesID)
-
+        print("stills: \(imageCollection.stills.count)")
+        print("id: \(imageCollection.id)")
         XCTAssertEqual(imageCollection.id, 63068)
         XCTAssertFalse(imageCollection.stills.isEmpty)
     }

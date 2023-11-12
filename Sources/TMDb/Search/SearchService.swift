@@ -36,10 +36,10 @@ public final class SearchService {
     ///
     /// - Returns: Movies, TV series and people matching the query.
     /// 
-    public func searchAll(query: String, page: Int? = nil) async throws -> MediaPageableList {
+    public func searchAll(query: String, includeAdult: Bool? = nil, page: Int? = nil) async throws -> MediaPageableList {
         let mediaList: MediaPageableList
         do {
-            mediaList = try await apiClient.get(endpoint: SearchEndpoint.multi(query: query, page: page))
+            mediaList = try await apiClient.get(endpoint: SearchEndpoint.multi(query: query, includeAdult: includeAdult, page: page))
         } catch let error {
             throw TMDbError(error: error)
         }

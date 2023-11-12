@@ -2,7 +2,7 @@ import Foundation
 
 enum SearchEndpoint {
 
-    case multi(query: String, page: Int? = nil)
+    case multi(query: String, includeAdult: Bool? = nil, page: Int? = nil)
     case movies(query: String, year: Int? = nil, page: Int? = nil)
     case tvSeries(query: String, firstAirDateYear: Int? = nil, page: Int? = nil)
     case people(query: String, page: Int? = nil)
@@ -20,10 +20,11 @@ extension SearchEndpoint: Endpoint {
     var path: URL {
         switch self {
 
-        case .multi(let query, let page):
+        case .multi(let query, let includeAdult, let page):
             return Self.basePath
                 .appendingPathComponent("multi")
                 .appendingQueryItem(name: QueryItemName.query, value: query)
+                .appendingIncludeAdult(includeAdult)
                 .appendingPage(page)
 
         case .movies(let query, let year, let page):
