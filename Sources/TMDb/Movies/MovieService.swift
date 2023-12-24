@@ -340,4 +340,19 @@ public final class MovieService {
 
         return result.results[regionCode]
     }
+    
+    
+    
+    public func fullDetails(forMovie id: Movie.ID) async throws -> Movie {
+        let movie: Movie
+        do {
+            movie = try await apiClient.get(endpoint: MoviesEndpoint.details(movieID: id))
+        } catch let error {
+            throw TMDbError(error: error)
+        }
+
+        return movie
+    }
+    
+    
 }

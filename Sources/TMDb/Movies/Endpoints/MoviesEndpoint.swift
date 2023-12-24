@@ -15,6 +15,7 @@ enum MoviesEndpoint {
     case releaseDates(movieID: Movie.ID)
     case externalIDs(movieID: Movie.ID)
     case watch(movieID: Movie.ID)
+    case fullDetails(movieID: Movie.ID)
 }
 
 extension MoviesEndpoint: Endpoint {
@@ -97,6 +98,12 @@ extension MoviesEndpoint: Endpoint {
             return Self.basePath
                 .appendingPathComponent(movieID)
                 .appendingPathComponent("watch/providers")
+            
+        case .fullDetails(let movieID):
+            return Self.basePath
+                .appendingPathComponent(movieID)
+                .appendingPathComponent("append_to_response=release_dates,credits,external_ids")
+            
         }
     }
 

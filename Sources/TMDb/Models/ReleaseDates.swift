@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ReleaseDates: Identifiable, Decodable, Equatable, Hashable {
+public struct ReleaseDates: Identifiable, Codable, Equatable, Hashable {
     
     public let id: Int
     public let results: [CountryReleaseDates]

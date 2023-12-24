@@ -27,7 +27,10 @@ extension Movie {
         voteAverage: Double? = Double.random(in: 1...10),
         voteCount: Int? = Int.random(in: 1...1000),
         hasVideo: Bool? = .random(),
-        isAdultOnly: Bool? = .random()
+        isAdultOnly: Bool? = .random(),
+        releaseDates: ReleaseDates? = nil,
+        credits: ShowCredits? = nil,
+        externalIds: MovieExternalIdList? = nil
     ) -> Self {
         .init(
             id: id,
@@ -53,7 +56,10 @@ extension Movie {
             voteAverage: voteAverage,
             voteCount: voteCount,
             hasVideo: hasVideo,
-            isAdultOnly: isAdultOnly
+            isAdultOnly: isAdultOnly,
+            releaseDates: releaseDates,
+            credits: credits,
+            externalIds: externalIds
         )
     }
 

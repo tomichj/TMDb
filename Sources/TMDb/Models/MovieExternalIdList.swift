@@ -24,4 +24,3 @@ public struct MovieExternalIdList: Identifiable, Codable, Equatable, Hashable {
         self.twitterId = twitterId
     }
 }
-

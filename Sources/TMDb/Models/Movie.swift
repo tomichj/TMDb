@@ -128,6 +128,15 @@ public struct Movie: Identifiable, Codable, Equatable, Hashable {
     /// Is the movie only suitable for adults.
     ///
     public let isAdultOnly: Bool?
+    
+    
+    
+    public let releaseDates: ReleaseDates?
+    public let credits: ShowCredits?
+    public let externalIds: MovieExternalIdList?
+    
+    
+    
 
     ///
     /// Creates a movie object.
@@ -182,7 +191,10 @@ public struct Movie: Identifiable, Codable, Equatable, Hashable {
         voteAverage: Double? = nil,
         voteCount: Int? = nil,
         hasVideo: Bool? = nil,
-        isAdultOnly: Bool? = nil
+        isAdultOnly: Bool? = nil,
+        releaseDates: ReleaseDates? = nil,
+        credits: ShowCredits? = nil,
+        externalIds: MovieExternalIdList? = nil
     ) {
         self.id = id
         self.title = title
@@ -208,6 +220,9 @@ public struct Movie: Identifiable, Codable, Equatable, Hashable {
         self.voteCount = voteCount
         self.hasVideo = hasVideo
         self.isAdultOnly = isAdultOnly
+        self.releaseDates = releaseDates
+        self.credits = credits
+        self.externalIds = externalIds
     }
 
 }
@@ -239,6 +254,9 @@ extension Movie {
         case voteCount
         case hasVideo = "video"
         case isAdultOnly = "adult"
+        case releaseDates
+        case credits
+        case externalIds = "external_ids"
     }
 
     public init(from decoder: Decoder) throws {
@@ -289,6 +307,10 @@ extension Movie {
         self.voteCount = try container.decodeIfPresent(Int.self, forKey: .voteCount)
         self.hasVideo = try container.decodeIfPresent(Bool.self, forKey: .hasVideo)
         self.isAdultOnly = try container.decodeIfPresent(Bool.self, forKey: .isAdultOnly)
+        
+        self.releaseDates = try container.decodeIfPresent(ReleaseDates.self, forKey: .releaseDates)
+        self.credits = try container.decodeIfPresent(ShowCredits.self, forKey: .credits)
+        self.externalIds = try container.decodeIfPresent(MovieExternalIdList.self, forKey: .externalIds)
     }
 
 }
