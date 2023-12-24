@@ -301,7 +301,6 @@ public final class MovieService {
 
         return movieList
     }
-
     
     public func releaseDates(forMovie movieID: Movie.ID) async throws -> ReleaseDates {
         try await apiClient.get(endpoint: MoviesEndpoint.releaseDates(movieID: movieID))
@@ -317,4 +316,28 @@ public final class MovieService {
         return externalIDs
     }
     
+    ///
+    /// Returns watch providers for a movie
+    ///
+    /// [TMDb API - Movie: Watch providers](https://developers.themoviedb.org/3/movies/get-movie-watch-providers)
+    /// - Parameters:
+    ///    - id: The identifier of the movie.
+    ///
+    /// - Throws: TMDb data error ``TMDbError``.
+    ///
+    /// - Returns: Watch providers for movie in current region.
+    ///
+    public func watchProviders(forMovie id: Movie.ID) async throws -> ShowWatchProvider? {
+        guard let regionCode = localeProvider().regionCode else {
+            return nil
+        }
+        let result: ShowWatchProviderResult
+        do {
+            result = try await apiClient.get(endpoint: MoviesEndpoint.watch(movieID: id))
+        } catch let error {
+            throw TMDbError(error: error)
+        }
+
+        return result.results[regionCode]
+    }
 }
