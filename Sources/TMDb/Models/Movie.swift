@@ -254,7 +254,7 @@ extension Movie {
         case voteCount
         case hasVideo = "video"
         case isAdultOnly = "adult"
-        case releaseDates
+        case releaseDates = "release_dates"
         case credits
         case externalIds = "external_ids"
     }
@@ -307,10 +307,9 @@ extension Movie {
         self.voteCount = try container.decodeIfPresent(Int.self, forKey: .voteCount)
         self.hasVideo = try container.decodeIfPresent(Bool.self, forKey: .hasVideo)
         self.isAdultOnly = try container.decodeIfPresent(Bool.self, forKey: .isAdultOnly)
-        
+        self.externalIds = try container.decodeIfPresent(MovieExternalIdList.self, forKey: .externalIds)
         self.releaseDates = try container.decodeIfPresent(ReleaseDates.self, forKey: .releaseDates)
         self.credits = try container.decodeIfPresent(ShowCredits.self, forKey: .credits)
-        self.externalIds = try container.decodeIfPresent(MovieExternalIdList.self, forKey: .externalIds)
     }
 
 }

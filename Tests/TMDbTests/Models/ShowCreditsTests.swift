@@ -6,13 +6,13 @@ final class ShowCreditsTests: XCTestCase {
     func testDecodeReturnsShowCredits() throws {
         let result = try JSONDecoder.theMovieDatabase.decode(ShowCredits.self, fromResource: "show-credits")
 
-        XCTAssertEqual(result.id, showCredits.id)
+//        XCTAssertEqual(result.id, showCredits.id)
         XCTAssertEqual(result.cast, showCredits.cast)
         XCTAssertEqual(result.crew, showCredits.crew)
     }
 
     private let showCredits = ShowCredits(
-        id: 550,
+//        id: 550,
         cast: [
             CastMember(
                 id: 819,

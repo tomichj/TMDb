@@ -8,5 +8,4 @@ extension JSONDecoder {
         decoder.dateDecodingStrategy = .formatted(.theMovieDatabase)
         return decoder
     }
-
 }

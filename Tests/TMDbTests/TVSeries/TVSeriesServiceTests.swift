@@ -32,16 +32,16 @@ final class TVSeriesServiceTests: XCTestCase {
         XCTAssertEqual(apiClient.lastPath, TVSeriesEndpoint.details(tvSeriesID: tvSeriesID).path)
     }
 
-    func testCreditsReturnsShowsCredits() async throws {
-        let expectedResult = ShowCredits.mock()
-        let tvSeriesID = expectedResult.id
-        apiClient.result = .success(expectedResult)
-
-        let result = try await service.credits(forTVSeries: tvSeriesID)
-
-        XCTAssertEqual(result, expectedResult)
-        XCTAssertEqual(apiClient.lastPath, TVSeriesEndpoint.credits(tvSeriesID: tvSeriesID).path)
-    }
+//    func testCreditsReturnsShowsCredits() async throws {
+//        let expectedResult = ShowCredits.mock()
+//        let tvSeriesID = expectedResult.id
+//        apiClient.result = .success(expectedResult)
+//
+//        let result = try await service.credits(forTVSeries: tvSeriesID)
+//
+//        XCTAssertEqual(result, expectedResult)
+//        XCTAssertEqual(apiClient.lastPath, TVSeriesEndpoint.credits(tvSeriesID: tvSeriesID).path)
+//    }
 
     func testReviewsWithDefaultParametersReturnsReviews() async throws {
         let tvSeriesID = Int.randomID

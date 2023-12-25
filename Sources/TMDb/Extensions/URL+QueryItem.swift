@@ -32,6 +32,7 @@ extension URL {
         static let withOriginCountry = "with_origin_country"
         static let withAirDateGTE = "air_date.gte"
         static let includeAdult = "include_adult"
+        static let appendToResponse = "append_to_response"
     }
     
     func appendingAPIKey(_ apiKey: String) -> Self {
@@ -154,5 +155,9 @@ extension URL {
         }
         
         return appendingQueryItem(name: QueryItemName.includeAdult, value: includeAdult)
+    }
+    
+    func appendingToResponse(_ appendToResponse: String) -> Self {
+        return appendingQueryItem(name: QueryItemName.appendToResponse, value: appendToResponse)
     }
 }
