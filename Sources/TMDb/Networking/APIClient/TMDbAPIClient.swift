@@ -42,8 +42,8 @@ final class TMDbAPIClient: APIClient {
             throw TMDbAPIError.unknown
         }
         
-//        print(data as NSData)
-        print(data.prettyPrintedJSONString ?? "Couldn't pretty-print json")
+        // for debugging
+        // print(data.prettyPrintedJSONString ?? "Couldn't pretty-print json")
 
         let decodedResponse: Response
         do {
