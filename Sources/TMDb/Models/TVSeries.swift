@@ -146,7 +146,9 @@ public struct TVSeries: Identifiable, Codable, Equatable, Hashable {
     
     
     public let createdBy: [CrewMember]?
-    
+    public let aggregateCredits: AggregateCredits?
+    public let contentRatings: ContentRatings?
+    public let externalIds: TVSeriesExternalIds?
     
     ///
     /// Creates a TV series object.
@@ -207,7 +209,10 @@ public struct TVSeries: Identifiable, Codable, Equatable, Hashable {
         voteAverage: Double? = nil,
         voteCount: Int? = nil,
         isAdultOnly: Bool? = nil,
-        createdBy: [CrewMember]? = nil
+        createdBy: [CrewMember]? = nil,
+        aggregateCredits: AggregateCredits? = nil,
+        contentRatings: ContentRatings? = nil,
+        externalIds: TVSeriesExternalIds? = nil
     ) {
         self.id = id
         self.name = name
@@ -237,6 +242,9 @@ public struct TVSeries: Identifiable, Codable, Equatable, Hashable {
         self.voteCount = voteCount
         self.isAdultOnly = isAdultOnly
         self.createdBy = createdBy
+        self.aggregateCredits = aggregateCredits
+        self.contentRatings = contentRatings
+        self.externalIds = externalIds
     }
 
 }
@@ -272,6 +280,9 @@ extension TVSeries {
         case homepageURL = "homepage"
         case isAdultOnly = "adult"
         case createdBy
+        case aggregateCredits
+        case contentRatings
+        case externalIds
     }
 
     public init(from decoder: Decoder) throws {
@@ -326,6 +337,9 @@ extension TVSeries {
         self.voteCount = try container.decodeIfPresent(Int.self, forKey: .voteCount)
         self.isAdultOnly = try container.decodeIfPresent(Bool.self, forKey: .isAdultOnly)
         self.createdBy = try container.decodeIfPresent([CrewMember].self, forKey: .createdBy)
+        self.aggregateCredits = try container.decodeIfPresent(AggregateCredits.self, forKey: .aggregateCredits)
+        self.contentRatings = try container.decodeIfPresent(ContentRatings.self, forKey: .contentRatings)
+        self.externalIds = try container.decodeIfPresent(TVSeriesExternalIds.self, forKey: .externalIds)
     }
 
 }

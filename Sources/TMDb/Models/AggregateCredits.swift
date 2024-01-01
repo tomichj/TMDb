@@ -1,13 +1,11 @@
 import Foundation
 
 
-public struct AggregateCredits: Identifiable, Decodable, Equatable, Hashable {
-    public let id: Int?
+public struct AggregateCredits: Codable, Equatable, Hashable {
     public let cast: [AggregateCast]
     public let crew: [AggregateCrew]
     
-    public init(id: Int, cast: [AggregateCast], crew: [AggregateCrew]) {
-        self.id = id
+    public init(cast: [AggregateCast], crew: [AggregateCrew]) {
         self.cast = cast
         self.crew = crew
     }

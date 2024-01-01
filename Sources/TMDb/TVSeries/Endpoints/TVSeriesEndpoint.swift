@@ -14,7 +14,8 @@ enum TVSeriesEndpoint {
     case contentRatings(tvSeriesID: TVSeries.ID)
     case externalIDs(tvSeriesID: TVSeries.ID)
     case watch(tvSeriesID: TVSeries.ID)
-    
+    case fullDetails(tvSeriesID: TVSeries.ID)
+
 }
 
 extension TVSeriesEndpoint: Endpoint {
@@ -86,6 +87,12 @@ extension TVSeriesEndpoint: Endpoint {
             return Self.basePath
                 .appendingPathComponent(tvSeriesID)
                 .appendingPathComponent("watch/providers")
+            
+        case .fullDetails(let tvSeriesID):
+            return Self.basePath
+                .appendingPathComponent(tvSeriesID)
+                .appendingToResponse("aggregate_credits,content_ratings,external_ids")
+
         }
     }
 

@@ -93,4 +93,21 @@ final class TVSeriesServiceTests: XCTestCase {
         XCTAssertTrue(externalIds.imdbId != nil)
     }
 
+    func testFullDetails() async throws {
+        let tvSeriesID = 76479
+        
+        let tvSeries = try await tvSeriesService.fullDetails(forTVSeries: tvSeriesID)
+        
+        XCTAssertTrue(tvSeries.aggregateCredits != nil)
+        XCTAssertTrue(tvSeries.aggregateCredits?.cast != nil)
+        XCTAssertTrue((tvSeries.aggregateCredits?.cast.count)! > 0)
+        XCTAssertTrue(tvSeries.aggregateCredits?.crew != nil)
+        XCTAssertTrue((tvSeries.aggregateCredits?.crew.count)! > 0)
+        XCTAssertTrue(tvSeries.contentRatings != nil)
+        XCTAssertTrue(tvSeries.contentRatings?.results != nil)
+        XCTAssertTrue((tvSeries.contentRatings?.results.count)! > 0)
+        XCTAssertTrue(tvSeries.externalIds != nil)
+        XCTAssertTrue(tvSeries.externalIds?.imdbId != nil)
+    }
+
 }

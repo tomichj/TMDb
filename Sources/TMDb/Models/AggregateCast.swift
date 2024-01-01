@@ -1,7 +1,7 @@
 import Foundation
 
 
-public struct AggregateCast: Identifiable, Decodable, Equatable, Hashable {
+public struct AggregateCast: Identifiable, Codable, Equatable, Hashable {
     public let id: Int
     public let isAdultOnly: Bool?
     public let gender: Int?

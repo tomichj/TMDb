@@ -256,8 +256,8 @@ public final class TVSeriesService {
         return contentRatings
     }
 
-    public func externalIDs(forTVSeries id: TVSeries.ID) async throws -> TVSeriesExternalIdList {
-        let externalIDs: TVSeriesExternalIdList
+    public func externalIDs(forTVSeries id: TVSeries.ID) async throws -> TVSeriesExternalIds {
+        let externalIDs: TVSeriesExternalIds
         do {
             externalIDs = try await apiClient.get(endpoint: TVSeriesEndpoint.externalIDs(tvSeriesID: id))
         } catch let error {
@@ -291,5 +291,17 @@ public final class TVSeriesService {
 
         return result.results[regionCode]
     }
+    
+    public func fullDetails(forTVSeries id: TVSeries.ID) async throws -> TVSeries {
+        let tvSeries: TVSeries
+        do {
+            tvSeries = try await apiClient.get(endpoint: TVSeriesEndpoint.fullDetails(tvSeriesID: id))
+        } catch let error {
+            throw TMDbError(error: error)
+        }
+
+        return tvSeries
+    }
+
 
 }

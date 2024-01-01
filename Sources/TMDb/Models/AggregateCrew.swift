@@ -1,7 +1,7 @@
 import Foundation
 
 
-public struct AggregateCrew: Identifiable, Decodable, Equatable, Hashable {
+public struct AggregateCrew: Identifiable, Codable, Equatable, Hashable {
     public let id: Int
     public let isAdultOnly: Bool?
     public let gender: Int?
