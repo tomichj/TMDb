@@ -43,7 +43,7 @@ final class TMDbAPIClient: APIClient {
         }
         
         // for debugging
-        // print(data.prettyPrintedJSONString ?? "Couldn't pretty-print json")
+         print(data.prettyPrintedJSONString ?? "Couldn't pretty-print json")
 
         let decodedResponse: Response
         do {

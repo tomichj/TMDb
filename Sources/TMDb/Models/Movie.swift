@@ -133,7 +133,7 @@ public struct Movie: Identifiable, Codable, Equatable, Hashable {
     
     public let releaseDates: ReleaseDates?
     public let credits: ShowCredits?
-    public let externalIds: MovieExternalIdList?
+    public let externalIds: MovieExternalIds?
     
     
     
@@ -194,7 +194,7 @@ public struct Movie: Identifiable, Codable, Equatable, Hashable {
         isAdultOnly: Bool? = nil,
         releaseDates: ReleaseDates? = nil,
         credits: ShowCredits? = nil,
-        externalIds: MovieExternalIdList? = nil
+        externalIds: MovieExternalIds? = nil
     ) {
         self.id = id
         self.title = title
@@ -229,7 +229,7 @@ public struct Movie: Identifiable, Codable, Equatable, Hashable {
 
 extension Movie {
 
-    private enum CodingKeys: String, CodingKey {
+    private enum MovieCodingKeys: String, CodingKey {
         case id
         case title
         case tagline
@@ -254,14 +254,14 @@ extension Movie {
         case voteCount
         case hasVideo = "video"
         case isAdultOnly = "adult"
-        case releaseDates = "release_dates"
+        case releaseDates
         case credits
-        case externalIds = "external_ids"
+        case externalIds
     }
 
     public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let container2 = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: MovieCodingKeys.self)
+        let container2 = try decoder.container(keyedBy: MovieCodingKeys.self)
 
         self.id = try container.decode(Int.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
@@ -307,9 +307,9 @@ extension Movie {
         self.voteCount = try container.decodeIfPresent(Int.self, forKey: .voteCount)
         self.hasVideo = try container.decodeIfPresent(Bool.self, forKey: .hasVideo)
         self.isAdultOnly = try container.decodeIfPresent(Bool.self, forKey: .isAdultOnly)
-        self.externalIds = try container.decodeIfPresent(MovieExternalIdList.self, forKey: .externalIds)
-        self.releaseDates = try container.decodeIfPresent(ReleaseDates.self, forKey: .releaseDates)
+        self.externalIds = try container.decodeIfPresent(MovieExternalIds.self, forKey: .externalIds)
         self.credits = try container.decodeIfPresent(ShowCredits.self, forKey: .credits)
+        self.releaseDates = try container.decodeIfPresent(ReleaseDates.self, forKey: .releaseDates)
     }
 
 }

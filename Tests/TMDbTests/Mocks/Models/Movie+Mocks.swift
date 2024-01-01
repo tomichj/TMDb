@@ -30,7 +30,7 @@ extension Movie {
         isAdultOnly: Bool? = .random(),
         releaseDates: ReleaseDates? = nil,
         credits: ShowCredits? = nil,
-        externalIds: MovieExternalIdList? = nil
+        externalIds: MovieExternalIds? = nil
     ) -> Self {
         .init(
             id: id,

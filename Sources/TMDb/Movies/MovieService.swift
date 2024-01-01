@@ -306,8 +306,8 @@ public final class MovieService {
         try await apiClient.get(endpoint: MoviesEndpoint.releaseDates(movieID: movieID))
     }
 
-    public func externalIDs(forMovie movieID: Movie.ID) async throws -> MovieExternalIdList {
-        let externalIDs: MovieExternalIdList
+    public func externalIDs(forMovie movieID: Movie.ID) async throws -> MovieExternalIds {
+        let externalIDs: MovieExternalIds
         do {
             externalIDs = try await apiClient.get(endpoint: MoviesEndpoint.externalIDs(movieID: movieID))
         } catch let error {
@@ -345,13 +345,30 @@ public final class MovieService {
     
     public func fullDetails(forMovie id: Movie.ID) async throws -> Movie {
         let movie: Movie
+//        var debugText: String = ""
+
         do {
             movie = try await apiClient.get(endpoint: MoviesEndpoint.fullDetails(movieID: id))
+            return movie
         } catch let error {
             throw TMDbError(error: error)
+//        } catch DecodingError.dataCorrupted(let context) {
+//            debugText = "\(context)"
+//        } catch DecodingError.keyNotFound(let key, let context) {
+//            debugText += "\nKey '\(key)' not found:\(context.debugDescription)."
+//            debugText += "IncodingPath: \(context.codingPath)."
+//        } catch DecodingError.valueNotFound (let value, let context) {
+//            debugText += "\nValue '\(value)' not found: \(context.debugDescription)."
+//            debugText += "\ncodingPath: \(context.codingPath)."
+//        } catch DecodingError.typeMismatch(let type, let context) {
+//            debugText += "\nType '\(type)' mismatch: \(context.debugDescription)."
+//            debugText += "\ncodingPath: \(context.codingPath)."
+//        } catch {
+//            debugText = "LOCALIZED DESC: \(error.localizedDescription)"
         }
 
-        return movie
+//        print("ERROR IS: \"\(debugText)\"")
+//        throw TMDbError(error: TMDbAPIError.unknown)
     }
     
     

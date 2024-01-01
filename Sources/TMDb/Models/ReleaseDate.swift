@@ -46,5 +46,16 @@ extension ReleaseDate {
         case releaseDateString = "releaseDate"
         case type
     }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.certification = try container.decodeIfPresent(String.self, forKey: .certification)
+        self.descriptors = try container.decodeIfPresent([String].self, forKey: .descriptors)
+        self.languageCode = try container.decodeIfPresent(String.self, forKey: .languageCode)
+        self.note = try container.decodeIfPresent(String.self, forKey: .note)
+        self.releaseDateString = try container.decode(String.self, forKey: .releaseDateString)
+        self.type = try container.decode(Int.self, forKey: .type)
+    }
+
 
 }

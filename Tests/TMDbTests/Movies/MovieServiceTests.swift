@@ -87,7 +87,7 @@ final class MovieServiceTests: XCTestCase {
         XCTAssertEqual(result, expectedResult)
         XCTAssertEqual(
             apiClient.lastPath,
-            MoviesEndpoint.images(movieID: movieID, languageCode: locale.languageCode).path
+            MoviesEndpoint.images(movieID: movieID, languageCode: locale.language.languageCode?.identifier).path
         )
     }
 
@@ -101,7 +101,7 @@ final class MovieServiceTests: XCTestCase {
         XCTAssertEqual(result, expectedResult)
         XCTAssertEqual(
             apiClient.lastPath,
-            MoviesEndpoint.videos(movieID: movieID, languageCode: locale.languageCode).path
+            MoviesEndpoint.videos(movieID: movieID, languageCode: locale.language.languageCode?.identifier).path
         )
     }
 

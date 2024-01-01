@@ -106,7 +106,7 @@ final class MovieIntegrationTests: XCTestCase {
     func testExternalIDs() async throws {
         let movieID = 575264
         
-        let movieExternalIdList: MovieExternalIdList = try await movieService.externalIDs(forMovie: movieID)
+        let movieExternalIdList: MovieExternalIds = try await movieService.externalIDs(forMovie: movieID)
         
         XCTAssertTrue(movieExternalIdList.imdbId != nil)
     }
@@ -117,10 +117,15 @@ final class MovieIntegrationTests: XCTestCase {
         let movie: Movie = try await movieService.fullDetails(forMovie: movieID)
         
         print("Cast members count: \(String(describing: movie.credits?.cast.count))")
+        print("imdb: \(String(describing: movie.externalIds?.imdbId))")
         XCTAssertEqual(movie.id, movieID)
         XCTAssertEqual(movie.title, "Mission: Impossible - Dead Reckoning Part One")
         XCTAssertTrue(movie.credits != nil)
         XCTAssertTrue(movie.credits?.cast != nil)
         XCTAssertTrue((movie.credits?.cast.count)! > 0)
+        XCTAssertTrue(movie.externalIds != nil)
+        XCTAssertTrue(movie.externalIds?.imdbId != nil)
+        XCTAssertTrue(movie.releaseDates != nil)
+        
     }
 }

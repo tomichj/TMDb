@@ -1,15 +1,17 @@
 import Foundation
 
-//public struct ReleaseDates: Identifiable, Codable, Equatable, Hashable {
 public struct ReleaseDates: Codable, Equatable, Hashable {
-    
-//    public let id: Int
     public let results: [CountryReleaseDates]
+}
 
-//    public init(id: Int, results: [CountryReleaseDates]) {
-    public init(results: [CountryReleaseDates]) {
-//        self.id = id
-        self.results = results
+extension ReleaseDates {
+    
+    enum CodingKeys: String, CodingKey {
+        case results
     }
-
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.results = try container.decode([CountryReleaseDates].self, forKey: .results)
+    }
 }
