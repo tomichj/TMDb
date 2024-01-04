@@ -56,4 +56,21 @@ final class TVEpisodeServiceTests: XCTestCase {
         XCTAssertFalse(videoCollection.results.isEmpty)
     }
 
+    func testFullDetails() async throws {
+        let episodeNumber = 3
+        let seasonNumber = 2
+        let tvSeriesID = 1399
+
+        let episode = try await tvEpisodeService.fullDetails(forEpisode: episodeNumber, inSeason: seasonNumber,
+                                                             inTVSeries: tvSeriesID)
+
+//        print(episode.credits)
+        XCTAssertEqual(episode.id, 63068)
+        XCTAssertEqual(episode.episodeNumber, episodeNumber)
+        XCTAssertEqual(episode.seasonNumber, seasonNumber)
+        XCTAssertEqual(episode.name, "What is Dead May Never Die")
+        XCTAssertEqual(episode.runtime, 53)
+        XCTAssertTrue(episode.credits?.cast.count ?? 0 > 0)
+    }
+
 }

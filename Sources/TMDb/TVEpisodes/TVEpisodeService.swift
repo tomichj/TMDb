@@ -142,4 +142,22 @@ public final class TVEpisodeService {
         return showCredits
     }
 
+    public func fullDetails(forEpisode episodeNumber: Int, 
+                            inSeason seasonNumber: Int,
+                            inTVSeries tvSeriesID: TVSeries.ID) async throws -> TVEpisode {
+        let episode: TVEpisode
+        do {
+            episode = try await apiClient.get(
+                endpoint: TVEpisodesEndpoint.fullDetails(
+                    tvSeriesID: tvSeriesID,
+                    seasonNumber: seasonNumber,
+                    episodeNumber: episodeNumber
+                )
+            )
+        } catch let error {
+            throw TMDbError(error: error)
+        }
+
+        return episode
+    }
 }
