@@ -19,7 +19,6 @@ extension PersonCombinedCredits {
         ]
     ) -> Self {
         .init(
-            id: id,
             cast: cast,
             crew: crew
         )

@@ -30,7 +30,6 @@ final class PersonIntegrationTests: XCTestCase {
 
         let credits = try await personService.combinedCredits(forPerson: personID)
 
-        XCTAssertEqual(credits.id, personID)
         XCTAssertFalse(credits.cast.isEmpty)
         XCTAssertFalse(credits.crew.isEmpty)
     }
@@ -86,4 +85,15 @@ final class PersonIntegrationTests: XCTestCase {
         XCTAssertTrue(externalIDs.imdbId != nil)
     }
 
+    func testFullDetails() async throws {
+        let personID = 500
+
+        let person = try await personService.fullDetails(forPerson: personID)
+
+        XCTAssertEqual(person.id, personID)
+        XCTAssertEqual(person.name, "Tom Cruise")
+        XCTAssertNotNil(person.combinedCredits)
+        XCTAssertTrue(person.combinedCredits?.cast.count ?? 0 > 0)
+        XCTAssertTrue(person.externalIds?.imdbId != nil)
+    }
 }

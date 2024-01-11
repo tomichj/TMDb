@@ -1,7 +1,6 @@
 import Foundation
 
-public struct PersonExternalIdList: Identifiable, Codable, Equatable, Hashable {
-    public let id: Int
+public struct PersonExternalIdList: Codable, Equatable, Hashable {
     public let freebaseMid: String?
     public let freebaseId: String?
     public let imdbId: String?
@@ -14,7 +13,6 @@ public struct PersonExternalIdList: Identifiable, Codable, Equatable, Hashable {
     public let youtubeId: String?
     
     public init(
-        id: Int,
         freebaseMid: String? = nil,
         freebaseId: String? = nil,
         imdbId: String? = nil,
@@ -26,7 +24,6 @@ public struct PersonExternalIdList: Identifiable, Codable, Equatable, Hashable {
         twitterId: String? = nil,
         youtubeId: String? = nil
     ) {
-        self.id = id
         self.freebaseMid = freebaseMid
         self.freebaseId = freebaseId
         self.imdbId = imdbId

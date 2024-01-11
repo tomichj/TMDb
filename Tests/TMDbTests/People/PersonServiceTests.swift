@@ -31,8 +31,8 @@ final class PersonServiceTests: XCTestCase {
 
     func testCombinedCreditsReturnsCombinedCredits() async throws {
         let mock = PersonCombinedCredits.mock()
-        let expectedResult = PersonCombinedCredits(id: mock.id, cast: mock.cast, crew: mock.crew)
-        let personID = expectedResult.id
+        let expectedResult = PersonCombinedCredits(cast: mock.cast, crew: mock.crew)
+        let personID = 123
         apiClient.result = .success(expectedResult)
 
         let result = try await service.combinedCredits(forPerson: personID)
@@ -78,7 +78,7 @@ final class PersonServiceTests: XCTestCase {
 
     func testKnownForReturnsShows() async throws {
         let credits = PersonCombinedCredits.mock()
-        let personID = credits.id
+        let personID = 123
         apiClient.result = .success(credits)
         let topCastShows = Array(credits.cast.prefix(10))
         let topCrewShows = Array(credits.crew.prefix(10))

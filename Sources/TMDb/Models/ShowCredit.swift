@@ -56,7 +56,7 @@ public enum ShowCredit: Identifiable, Equatable, Hashable {
 
 }
 
-extension ShowCredit: Decodable {
+extension ShowCredit: Codable {
 
     private enum CodingKeys: String, CodingKey {
         case mediaType
@@ -77,6 +77,18 @@ extension ShowCredit: Decodable {
 
         case .tvShow:
             self = .tvShow(try TVSeriesCredit(from: decoder))
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var singleContainer = encoder.singleValueContainer()
+
+        switch self {
+        case .movie(let movie):
+            try singleContainer.encode(movie)
+            
+        case .tvShow(let tvShow):
+            try singleContainer.encode(tvShow)
         }
     }
 

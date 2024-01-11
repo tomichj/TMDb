@@ -72,11 +72,13 @@ public struct Person: Identifiable, Codable, Equatable, Hashable {
     ///
     public let homepageURL: URL?
 
-
     // to support Person in search
     public let originalName: String?
+    
     public let knownFor: [Media]?
-
+    public let combinedCredits: PersonCombinedCredits?
+    public let externalIds: PersonExternalIdList?
+    
     
     ///
     /// Creates a person object.
@@ -111,7 +113,9 @@ public struct Person: Identifiable, Codable, Equatable, Hashable {
         imdbID: String? = nil,
         homepageURL: URL? = nil,
         originalName: String? = nil,
-        knownFor: [Media]? = nil
+        knownFor: [Media]? = nil,
+        combinedCredits: PersonCombinedCredits? = nil,
+        externalIds: PersonExternalIdList? = nil
     ) {
         self.id = id
         self.name = name
@@ -128,6 +132,8 @@ public struct Person: Identifiable, Codable, Equatable, Hashable {
         self.homepageURL = homepageURL
         self.originalName = originalName
         self.knownFor = knownFor
+        self.combinedCredits = combinedCredits
+        self.externalIds = externalIds
     }
 
 }
@@ -150,6 +156,8 @@ extension Person {
         case homepageURL = "homepage"
         case originalName
         case knownFor
+        case combinedCredits
+        case externalIds
     }
 
     public init(from decoder: Decoder) throws {
@@ -180,6 +188,9 @@ extension Person {
         }()
         self.originalName = try container.decodeIfPresent(String.self, forKey: .originalName)
         self.knownFor = try container.decodeIfPresent([Media].self, forKey: .knownFor)
+        
+        self.externalIds = try container.decodeIfPresent(PersonExternalIdList.self, forKey: .externalIds)
+        self.combinedCredits = try container.decodeIfPresent(PersonCombinedCredits.self, forKey: .combinedCredits)
     }
 
 }

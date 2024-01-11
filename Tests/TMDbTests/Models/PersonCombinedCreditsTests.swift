@@ -6,14 +6,12 @@ final class PersonCombinedCreditsTests: XCTestCase {
     func testDecodeReturnsPersonCombinedCredits() throws {
         let result = try JSONDecoder.theMovieDatabase
             .decode(PersonCombinedCredits.self, fromResource: "person-combined-credits")
-        XCTAssertEqual(result.id, personCombinedCredits.id)
         XCTAssertEqual(result.cast, personCombinedCredits.cast)
         XCTAssertEqual(result.crew, personCombinedCredits.crew)
     }
 
     // swiftlint:disable line_length
     private let personCombinedCredits = PersonCombinedCredits(
-        id: 287,
         cast: [
 //            .tvSeries(TVSeries(
             .tvShow(TVSeriesCredit(
