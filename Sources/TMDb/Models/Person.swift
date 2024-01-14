@@ -188,7 +188,6 @@ extension Person {
         }()
         self.originalName = try container.decodeIfPresent(String.self, forKey: .originalName)
         self.knownFor = try container.decodeIfPresent([Media].self, forKey: .knownFor)
-        
         self.externalIds = try container.decodeIfPresent(PersonExternalIdList.self, forKey: .externalIds)
         self.combinedCredits = try container.decodeIfPresent(PersonCombinedCredits.self, forKey: .combinedCredits)
     }

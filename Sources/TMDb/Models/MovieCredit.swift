@@ -8,6 +8,7 @@ public struct MovieCredit: Identifiable, Codable, Equatable, Hashable {
     public let department: String?
     public let job: String?
     public let character: String?
+    public let order: Int?
 
     public var id: Int { return movie.id }
     public var popularity: Double? { return movie.popularity }
@@ -18,13 +19,15 @@ public struct MovieCredit: Identifiable, Codable, Equatable, Hashable {
         creditID: String,
         department: String? = nil,
         job: String? = nil,
-        character: String? = nil
+        character: String? = nil,
+        order: Int? = nil
     ) {
         self.movie = movie
         self.creditID = creditID
         self.department = department
         self.job = job
         self.character = character
+        self.order = order
     }
 
     public init(
@@ -47,7 +50,8 @@ public struct MovieCredit: Identifiable, Codable, Equatable, Hashable {
         isAdultOnly: Bool? = nil,
         department: String? = nil,
         job: String? = nil,
-        character: String? = nil
+        character: String? = nil,
+        order: Int? = nil
     ) {
         self.movie = .init(
             id: id,
@@ -71,6 +75,7 @@ public struct MovieCredit: Identifiable, Codable, Equatable, Hashable {
         self.department = department
         self.job = job
         self.character = character
+        self.order = order
     }
 }
 
@@ -81,6 +86,7 @@ extension MovieCredit {
         case department
         case job
         case character
+        case order
     }
 
     public init(from decoder: Decoder) throws {
@@ -91,6 +97,7 @@ extension MovieCredit {
         self.department = try container.decodeIfPresent(String.self, forKey: .department)
         self.job = try container.decodeIfPresent(String.self, forKey: .job)
         self.character = try container.decodeIfPresent(String.self, forKey: .character)
+        self.order = try container.decodeIfPresent(Int.self, forKey: .order)
     }
 
 }
