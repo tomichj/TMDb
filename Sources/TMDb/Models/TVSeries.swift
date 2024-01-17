@@ -149,6 +149,7 @@ public struct TVSeries: Identifiable, Codable, Equatable, Hashable {
     public let aggregateCredits: AggregateCredits?
     public let contentRatings: ContentRatings?
     public let externalIds: TVSeriesExternalIds?
+    public let nextEpisodeToAir: TVEpisode?
     
     ///
     /// Creates a TV series object.
@@ -212,7 +213,8 @@ public struct TVSeries: Identifiable, Codable, Equatable, Hashable {
         createdBy: [CrewMember]? = nil,
         aggregateCredits: AggregateCredits? = nil,
         contentRatings: ContentRatings? = nil,
-        externalIds: TVSeriesExternalIds? = nil
+        externalIds: TVSeriesExternalIds? = nil,
+        nextEpisodeToAir: TVEpisode? = nil
     ) {
         self.id = id
         self.name = name
@@ -245,6 +247,7 @@ public struct TVSeries: Identifiable, Codable, Equatable, Hashable {
         self.aggregateCredits = aggregateCredits
         self.contentRatings = contentRatings
         self.externalIds = externalIds
+        self.nextEpisodeToAir = nextEpisodeToAir
     }
 
 }
@@ -283,6 +286,7 @@ extension TVSeries {
         case aggregateCredits
         case contentRatings
         case externalIds
+        case nextEpisodeToAir
     }
 
     public init(from decoder: Decoder) throws {
@@ -340,6 +344,7 @@ extension TVSeries {
         self.aggregateCredits = try container.decodeIfPresent(AggregateCredits.self, forKey: .aggregateCredits)
         self.contentRatings = try container.decodeIfPresent(ContentRatings.self, forKey: .contentRatings)
         self.externalIds = try container.decodeIfPresent(TVSeriesExternalIds.self, forKey: .externalIds)
+        self.nextEpisodeToAir = try container.decodeIfPresent(TVEpisode.self, forKey: .nextEpisodeToAir)
     }
 
 }

@@ -95,6 +95,7 @@ final class TVSeriesServiceTests: XCTestCase {
 
     func testFullDetails() async throws {
         let tvSeriesID = 76479
+//        let tvSeriesID = 2051
         
         let tvSeries = try await tvSeriesService.fullDetails(forTVSeries: tvSeriesID)
         
@@ -108,6 +109,8 @@ final class TVSeriesServiceTests: XCTestCase {
         XCTAssertTrue((tvSeries.contentRatings?.results.count)! > 0)
         XCTAssertTrue(tvSeries.externalIds != nil)
         XCTAssertTrue(tvSeries.externalIds?.imdbId != nil)
+        XCTAssertTrue(tvSeries.nextEpisodeToAir == nil)
+//        XCTAssertTrue(tvSeries.nextEpisodeToAir != nil)
     }
 
 }
