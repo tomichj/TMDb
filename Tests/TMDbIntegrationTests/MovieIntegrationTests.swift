@@ -126,6 +126,8 @@ final class MovieIntegrationTests: XCTestCase {
         XCTAssertTrue(movie.externalIds != nil)
         XCTAssertTrue(movie.externalIds?.imdbId != nil)
         XCTAssertTrue(movie.releaseDates != nil)
+        XCTAssertTrue(movie.similar != nil)
+        XCTAssertTrue(movie.similar?.page == 1)
         
     }
 }

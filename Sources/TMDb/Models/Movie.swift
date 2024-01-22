@@ -134,7 +134,7 @@ public struct Movie: Identifiable, Codable, Equatable, Hashable {
     public let releaseDates: ReleaseDates?
     public let credits: ShowCredits?
     public let externalIds: MovieExternalIds?
-    
+    public let similar: SimilarMovies?
     
     
 
@@ -194,7 +194,8 @@ public struct Movie: Identifiable, Codable, Equatable, Hashable {
         isAdultOnly: Bool? = nil,
         releaseDates: ReleaseDates? = nil,
         credits: ShowCredits? = nil,
-        externalIds: MovieExternalIds? = nil
+        externalIds: MovieExternalIds? = nil,
+        similar: SimilarMovies? = nil
     ) {
         self.id = id
         self.title = title
@@ -223,6 +224,7 @@ public struct Movie: Identifiable, Codable, Equatable, Hashable {
         self.releaseDates = releaseDates
         self.credits = credits
         self.externalIds = externalIds
+        self.similar = similar
     }
 
 }
@@ -257,12 +259,13 @@ extension Movie {
         case releaseDates
         case credits
         case externalIds
+        case similar
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: MovieCodingKeys.self)
         let container2 = try decoder.container(keyedBy: MovieCodingKeys.self)
-
+        
         self.id = try container.decode(Int.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
         self.tagline = try container.decodeIfPresent(String.self, forKey: .tagline)
@@ -271,32 +274,32 @@ extension Movie {
         self.overview = try container.decodeIfPresent(String.self, forKey: .overview)
         self.runtime = try container.decodeIfPresent(Int.self, forKey: .runtime)
         self.genres = try container.decodeIfPresent([Genre].self, forKey: .genres)
-
+        
         // Need to deal with empty strings - date decoding will fail with an empty string
         let releaseDateString = try container.decodeIfPresent(String.self, forKey: .releaseDate)
         self.releaseDate = try {
             guard let releaseDateString, !releaseDateString.isEmpty else {
                 return nil
             }
-
+            
             return try container2.decodeIfPresent(Date.self, forKey: .releaseDate)
         }()
-
+        
         self.posterPath = try container.decodeIfPresent(URL.self, forKey: .posterPath)
         self.backdropPath = try container.decodeIfPresent(URL.self, forKey: .backdropPath)
         self.budget = try container.decodeIfPresent(Double.self, forKey: .budget)
         self.revenue = try container.decodeIfPresent(Double.self, forKey: .revenue)
-
+        
         // Need to deal with empty strings - URL decoding will fail with an empty string
         let homepageURLString = try container.decodeIfPresent(String.self, forKey: .homepageURL)
         self.homepageURL = try {
             guard let homepageURLString, !homepageURLString.isEmpty else {
                 return nil
             }
-
+            
             return try container2.decodeIfPresent(URL.self, forKey: .homepageURL)
         }()
-
+        
         self.imdbID = try container.decodeIfPresent(String.self, forKey: .imdbID)
         self.status = try container.decodeIfPresent(Status.self, forKey: .status)
         self.productionCompanies = try container.decodeIfPresent([ProductionCompany].self, forKey: .productionCompanies)
@@ -310,6 +313,6 @@ extension Movie {
         self.externalIds = try container.decodeIfPresent(MovieExternalIds.self, forKey: .externalIds)
         self.credits = try container.decodeIfPresent(ShowCredits.self, forKey: .credits)
         self.releaseDates = try container.decodeIfPresent(ReleaseDates.self, forKey: .releaseDates)
+        self.similar = try container.decodeIfPresent(SimilarMovies.self, forKey: .similar)
     }
-
 }
