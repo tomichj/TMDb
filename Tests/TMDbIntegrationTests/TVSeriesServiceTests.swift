@@ -110,9 +110,10 @@ final class TVSeriesServiceTests: XCTestCase {
         XCTAssertTrue(tvSeries.externalIds != nil)
         XCTAssertTrue(tvSeries.externalIds?.imdbId != nil)
         XCTAssertTrue(tvSeries.nextEpisodeToAir == nil)
-//        XCTAssertTrue(tvSeries.nextEpisodeToAir != nil)
         XCTAssertTrue(tvSeries.similar != nil)
-        print(tvSeries.similar)
+        XCTAssertTrue(tvSeries.keywords != nil)
+        XCTAssertTrue((tvSeries.keywords!.results?.count)! > 0)
+
     }
 
 }

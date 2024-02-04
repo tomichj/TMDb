@@ -151,6 +151,7 @@ public struct TVSeries: Identifiable, Codable, Equatable, Hashable {
     public let externalIds: TVSeriesExternalIds?
     public let nextEpisodeToAir: TVEpisode?
     public let similar: SimilarTvSeries?
+    public let keywords: TVSeriesKeywords?
     
     
     ///
@@ -217,7 +218,8 @@ public struct TVSeries: Identifiable, Codable, Equatable, Hashable {
         contentRatings: ContentRatings? = nil,
         externalIds: TVSeriesExternalIds? = nil,
         nextEpisodeToAir: TVEpisode? = nil,
-        similar: SimilarTvSeries? = nil
+        similar: SimilarTvSeries? = nil,
+        keywords: TVSeriesKeywords? = nil
     ) {
         self.id = id
         self.name = name
@@ -252,6 +254,7 @@ public struct TVSeries: Identifiable, Codable, Equatable, Hashable {
         self.externalIds = externalIds
         self.nextEpisodeToAir = nextEpisodeToAir
         self.similar = similar
+        self.keywords = keywords
     }
 
 }
@@ -292,6 +295,7 @@ extension TVSeries {
         case externalIds
         case nextEpisodeToAir
         case similar
+        case keywords
     }
 
     public init(from decoder: Decoder) throws {
@@ -351,6 +355,7 @@ extension TVSeries {
         self.externalIds = try container.decodeIfPresent(TVSeriesExternalIds.self, forKey: .externalIds)
         self.nextEpisodeToAir = try container.decodeIfPresent(TVEpisode.self, forKey: .nextEpisodeToAir)
         self.similar = try container.decodeIfPresent(SimilarTvSeries.self, forKey: .similar)
+        self.keywords = try container.decodeIfPresent(TVSeriesKeywords.self, forKey: .keywords)
     }
 
 }

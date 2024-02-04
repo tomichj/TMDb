@@ -91,7 +91,7 @@ extension TVSeriesEndpoint: Endpoint {
         case .fullDetails(let tvSeriesID):
             return Self.basePath
                 .appendingPathComponent(tvSeriesID)
-                .appendingToResponse("aggregate_credits,content_ratings,external_ids,similar")
+                .appendingToResponse("aggregate_credits,content_ratings,external_ids,similar,keywords")
 
         }
     }
