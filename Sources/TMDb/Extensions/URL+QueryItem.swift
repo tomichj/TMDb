@@ -28,6 +28,7 @@ extension URL {
         static let firstAirDateYear = "first_air_date_year"
         static let withPeople = "with_people"
         static let withGenres = "with_genres"
+        static let withKeywords = "with_keywords"
         static let withRegionCode = "region"
         static let withOriginCountry = "with_origin_country"
         static let withAirDateGTE = "air_date.gte"
@@ -120,6 +121,18 @@ extension URL {
             .joined(separator: ",")
         
         return appendingQueryItem(name: QueryItemName.withGenres, value: value)
+    }
+    
+    func appendingWithKeywords(_ keywordIDs: [Keyword.ID]?) -> Self {
+        guard let keywordIDs else {
+            return self
+        }
+        
+        let value = keywordIDs
+            .map{ String($0) }
+            .joined(separator: ",")
+        
+        return appendingQueryItem(name: QueryItemName.withKeywords, value: value)
     }
     
     func appendingRegionCode(_ regionCode: String?) -> Self {
