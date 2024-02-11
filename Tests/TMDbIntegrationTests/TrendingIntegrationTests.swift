@@ -52,4 +52,22 @@ final class TrendingIntegrationTests: XCTestCase {
         XCTAssertFalse(personList.results.isEmpty)
     }
 
+    func testMoviesTrendingByDayWithLanguage() async throws {
+        let movieList = try await trendingService.movies(inTimeWindow: .day, language: "en-US")
+
+        XCTAssertFalse(movieList.results.isEmpty)
+    }
+
+    func testMoviesTrendingByDayWithRegion() async throws {
+        let movieList = try await trendingService.movies(inTimeWindow: .day, region: "US")
+
+        XCTAssertFalse(movieList.results.isEmpty)
+    }
+
+    func testMoviesTrendingByDayWithLanguageAndRegion() async throws {
+        let movieList = try await trendingService.movies(inTimeWindow: .day, language: "en-US", region: "US")
+
+        XCTAssertFalse(movieList.results.isEmpty)
+    }
+
 }
