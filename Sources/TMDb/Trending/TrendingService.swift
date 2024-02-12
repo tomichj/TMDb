@@ -40,13 +40,12 @@ public final class TrendingService {
     /// - Returns: Trending movies in a time window as a pageable list.
     ///
     public func movies(inTimeWindow timeWindow: TrendingTimeWindowFilterType = .day,
-                       language languageCode: String? = nil, region regionCode: String? = nil,
+                       language languageCode: String? = nil,
                        page: Int? = nil) async throws -> MoviePageableList {
         let movieList: MoviePageableList
         do {
             movieList = try await apiClient.get(endpoint: TrendingEndpoint.movies(timeWindow: timeWindow, 
                                                                                   languageCode: languageCode,
-                                                                                  regionCode: regionCode,
                                                                                   page: page))
         } catch let error {
             throw TMDbError(error: error)
@@ -74,13 +73,12 @@ public final class TrendingService {
     /// - Returns: Trending TV series in a time window as a pageable list.
     ///
     public func tvSeries(inTimeWindow timeWindow: TrendingTimeWindowFilterType = .day,
-                         language languageCode: String? = nil, region regionCode: String? = nil,
+                         language languageCode: String? = nil,
                          page: Int? = nil) async throws -> TVSeriesPageableList {
         let tvSeriesList: TVSeriesPageableList
         do {
             tvSeriesList = try await apiClient.get(endpoint: TrendingEndpoint.tvSeries(timeWindow: timeWindow,
                                                                                        languageCode: languageCode,
-                                                                                       regionCode: regionCode,
                                                                                        page: page)
             )
         } catch let error {
@@ -109,13 +107,12 @@ public final class TrendingService {
     /// - Returns: Trending people in a time window as a pageable list.
     ///
     public func people(inTimeWindow timeWindow: TrendingTimeWindowFilterType = .day,
-                       language languageCode: String? = nil, region regionCode: String? = nil,
+                       language languageCode: String? = nil,
                        page: Int? = nil) async throws -> PersonPageableList {
         let peopleList: PersonPageableList
         do {
             peopleList = try await apiClient.get(endpoint: TrendingEndpoint.people(timeWindow: timeWindow, 
                                                                                    languageCode: languageCode,
-                                                                                   regionCode: regionCode,
                                                                                    page: page))
         } catch let error {
             throw TMDbError(error: error)
