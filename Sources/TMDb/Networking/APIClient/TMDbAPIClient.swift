@@ -44,7 +44,8 @@ final class TMDbAPIClient: APIClient {
         
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // for debugging
-//         print(data.prettyPrintedJSONString ?? "Couldn't pretty-print json")
+        print("REQUEST URL: \(url)")
+//        print(data.prettyPrintedJSONString ?? "Couldn't pretty-print json")
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         let decodedResponse: Response
@@ -70,9 +71,14 @@ extension TMDbAPIClient {
         urlComponents.host = baseURL.host
         urlComponents.path = "\(baseURL.path)\(urlComponents.path)"
 
-        return urlComponents.url!
-            .appendingAPIKey(apiKey)
-            .appendingLanguage(localeProvider().languageCode)
+        if path.absoluteString.contains("language=") {
+            return urlComponents.url!
+                .appendingAPIKey(apiKey)
+        } else {
+            return urlComponents.url!
+                .appendingAPIKey(apiKey)
+                .appendingLanguage(localeProvider().languageCode)
+        }
     }
 
     private func validate(response: HTTPResponse) async throws {
