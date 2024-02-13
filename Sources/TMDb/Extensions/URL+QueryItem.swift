@@ -34,6 +34,10 @@ extension URL {
         static let withAirDateGTE = "air_date.gte"
         static let includeAdult = "include_adult"
         static let appendToResponse = "append_to_response"
+        static let primaryReleaseDateGTE = "primary_release_date.gte"
+        static let primaryReleaseDateLTE = "primary_release_date.lte"
+        static let releaseDateGTE = "release_date.gte"
+        static let releaseDateLTE = "release_date.lte"
     }
     
     func appendingAPIKey(_ apiKey: String) -> Self {
@@ -161,6 +165,55 @@ extension URL {
         
         return appendingQueryItem(name: QueryItemName.withAirDateGTE, value: airDateGTEString)
     }
+
+    func appendingPrimaryReleaseDateGTE(_ primaryReleaseDateGTE: Date?) -> Self {
+        guard let primaryReleaseDateGTE else {
+            return self
+        }
+        
+        // turn Date into String yyyy-MM-dd
+        let primaryReleaseDateGTEString = DateFormatter.theMovieDatabase.string(from: primaryReleaseDateGTE)
+        
+        return appendingQueryItem(name: QueryItemName.primaryReleaseDateGTE, value: primaryReleaseDateGTEString)
+    }
+
+    func appendingPrimaryReleaseDateLTE(_ primaryReleaseDateLTE: Date?) -> Self {
+        guard let primaryReleaseDateLTE else {
+            return self
+        }
+        
+        // turn Date into String yyyy-MM-dd
+        let primaryReleaseDateLTEString = DateFormatter.theMovieDatabase.string(from: primaryReleaseDateLTE)
+        
+        return appendingQueryItem(name: QueryItemName.primaryReleaseDateLTE, value: primaryReleaseDateLTEString)
+    }
+
+    func appendingReleaseDateGTE(_ releaseDateGTE: Date?) -> Self {
+        guard let releaseDateGTE else {
+            return self
+        }
+        
+        // turn Date into String yyyy-MM-dd
+        let releaseDateGTEString = DateFormatter.theMovieDatabase.string(from: releaseDateGTE)
+        
+        return appendingQueryItem(name: QueryItemName.releaseDateGTE, value: releaseDateGTEString)
+    }
+
+    func appendingReleaseDateLTE(_ releaseDateLTE: Date?) -> Self {
+        guard let releaseDateLTE else {
+            return self
+        }
+        
+        // turn Date into String yyyy-MM-dd
+        let releaseDateLTEString = DateFormatter.theMovieDatabase.string(from: releaseDateLTE)
+        
+        return appendingQueryItem(name: QueryItemName.releaseDateLTE, value: releaseDateLTEString)
+    }
+    
+    
+    
+    
+
     
     func appendingIncludeAdult(_ includeAdult: Bool?) -> Self {
         guard let includeAdult else {

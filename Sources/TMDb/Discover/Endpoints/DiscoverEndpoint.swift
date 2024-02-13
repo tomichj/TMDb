@@ -2,7 +2,17 @@ import Foundation
 
 enum DiscoverEndpoint {
 
-    case movies(sortedBy: MovieSort? = nil, people: [Person.ID]? = nil, genres: [Genre.ID]? = nil, keywords: [Keyword.ID]? = nil, regionCode: String? = nil, page: Int? = nil)
+    case movies(language: String? = nil,
+                primaryReleaseDateGTE: Date? = nil,
+                primaryReleaseDateLTE: Date? = nil,
+                releaseDateGTE: Date? = nil,
+                releaseDateLTE: Date? = nil,
+                sortedBy: MovieSort? = nil,
+                people: [Person.ID]? = nil,
+                genres: [Genre.ID]? = nil,
+                keywords: [Keyword.ID]? = nil,
+                regionCode: String? = nil,
+                page: Int? = nil)
     case tvSeries(sortedBy: TVSeriesSort? = nil, genres: [Genre.ID]? = nil, keywords: [Keyword.ID]? = nil, withOriginCountry: String? = nil, withAirDateGTE: Date? = nil, page: Int? = nil)
 
 }
@@ -13,9 +23,14 @@ extension DiscoverEndpoint: Endpoint {
 
     var path: URL {
         switch self {
-        case .movies(let sortedBy, let people, let genres, let keywords, let regionCode, let page):
+        case .movies(let language, let primaryReleaseDateGTE, let primaryReleaseDateLTE, let releaseDateGTE, let releaseDateLTE, let sortedBy, let people, let genres, let keywords, let regionCode, let page):
             return Self.basePath
                 .appendingPathComponent("movie")
+                .appendingLanguage(language)
+                .appendingPrimaryReleaseDateGTE(primaryReleaseDateGTE)
+                .appendingPrimaryReleaseDateLTE(primaryReleaseDateLTE)
+                .appendingReleaseDateGTE(releaseDateGTE)
+                .appendingReleaseDateLTE(releaseDateLTE)
                 .appendingSortBy(sortedBy)
                 .appendingWithPeople(people)
                 .appendingWithGenres(genres)

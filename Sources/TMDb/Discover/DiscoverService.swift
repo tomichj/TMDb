@@ -38,7 +38,12 @@ public final class DiscoverService {
     ///
     /// - Returns: Matching movies as a pageable list.
     ///
-    public func movies(sortedBy: MovieSort? = nil, 
+    public func movies(language: String? = nil,
+                       primaryReleaseDateGTE: Date? = nil,
+                       primaryReleaseDateLTE: Date? = nil,
+                       releaseDateGTE: Date? = nil,
+                       releaseDateLTE: Date? = nil,
+                       sortedBy: MovieSort? = nil,
                        withPeople people: [Person.ID]? = nil,
                        withGenres genres: [Genre.ID]? = nil,
                        withKeywords keywords: [Keyword.ID]? = nil,
@@ -47,7 +52,7 @@ public final class DiscoverService {
         let movieList: MoviePageableList
         do {
             movieList = try await apiClient.get(
-                endpoint: DiscoverEndpoint.movies(sortedBy: sortedBy, people: people, genres: genres, keywords: keywords, regionCode: regionCode, page: page)
+                endpoint: DiscoverEndpoint.movies(language: language, primaryReleaseDateGTE: primaryReleaseDateGTE, primaryReleaseDateLTE: primaryReleaseDateLTE, releaseDateGTE: releaseDateGTE, releaseDateLTE: releaseDateLTE, sortedBy: sortedBy, people: people, genres: genres, keywords: keywords, regionCode: regionCode, page: page)
             )
         } catch let error {
             throw TMDbError(error: error)
