@@ -13,7 +13,15 @@ enum DiscoverEndpoint {
                 keywords: [Keyword.ID]? = nil,
                 regionCode: String? = nil,
                 page: Int? = nil)
-    case tvSeries(sortedBy: TVSeriesSort? = nil, genres: [Genre.ID]? = nil, keywords: [Keyword.ID]? = nil, withOriginCountry: String? = nil, withAirDateGTE: Date? = nil, page: Int? = nil)
+    
+    case tvSeries(language: String? = nil,
+                  sortedBy: TVSeriesSort? = nil,
+                  genres: [Genre.ID]? = nil,
+                  keywords: [Keyword.ID]? = nil,
+                  withOriginCountry: String? = nil,
+                  withAirDateGTE: Date? = nil,
+                  withAirDateLTE: Date? = nil,
+                  page: Int? = nil)
 
 }
 
@@ -38,9 +46,10 @@ extension DiscoverEndpoint: Endpoint {
                 .appendingRegionCode(regionCode)
                 .appendingPage(page)
 
-        case .tvSeries(let sortedBy, let genres, let keywords, let originCountry, let airDateGTE, let page):
+        case .tvSeries(let language, let sortedBy, let genres, let keywords, let originCountry, let airDateGTE, let airDateLTE, let page):
             return Self.basePath
                 .appendingPathComponent("tv")
+                .appendingLanguage(language)
                 .appendingSortBy(sortedBy)
                 .appendingWithGenres(genres)
                 .appendingWithKeywords(keywords)

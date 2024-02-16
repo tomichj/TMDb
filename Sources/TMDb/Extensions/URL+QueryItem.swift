@@ -32,6 +32,7 @@ extension URL {
         static let withRegionCode = "region"
         static let withOriginCountry = "with_origin_country"
         static let withAirDateGTE = "air_date.gte"
+        static let withAirDateLTE = "air_date.lte"
         static let includeAdult = "include_adult"
         static let appendToResponse = "append_to_response"
         static let primaryReleaseDateGTE = "primary_release_date.gte"
@@ -164,6 +165,17 @@ extension URL {
         let airDateGTEString = DateFormatter.theMovieDatabase.string(from: airDateGTE)
         
         return appendingQueryItem(name: QueryItemName.withAirDateGTE, value: airDateGTEString)
+    }
+
+    func appendingAirDateLTE(_ airDateLTE: Date?) -> Self {
+        guard let airDateLTE else {
+            return self
+        }
+        
+        // turn Date into String yyyy-MM-dd
+        let airDateLTEString = DateFormatter.theMovieDatabase.string(from: airDateLTE)
+        
+        return appendingQueryItem(name: QueryItemName.withAirDateLTE, value: airDateLTEString)
     }
 
     func appendingPrimaryReleaseDateGTE(_ primaryReleaseDateGTE: Date?) -> Self {
