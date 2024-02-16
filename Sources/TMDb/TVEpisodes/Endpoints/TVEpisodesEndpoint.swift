@@ -6,7 +6,7 @@ enum TVEpisodesEndpoint {
     case credits(tvSeriesID: TVSeries.ID, seasonNumber: Int, episodeNumber: Int)
     case images(tvSeriesID: TVSeries.ID, seasonNumber: Int, episodeNumber: Int, languageCode: String?)
     case videos(tvSeriesID: TVSeries.ID, seasonNumber: Int, episodeNumber: Int, languageCode: String?)
-    case fullDetails(tvSeriesID: TVSeries.ID, seasonNumber: Int, episodeNumber: Int)
+    case fullDetails(tvSeriesID: TVSeries.ID, seasonNumber: Int, episodeNumber: Int, languageCode: String?)
 }
 
 extension TVEpisodesEndpoint: Endpoint {
@@ -47,13 +47,13 @@ extension TVEpisodesEndpoint: Endpoint {
                 .appendingPathComponent(episodeNumber)
                 .appendingPathComponent("credits")
             
-        case .fullDetails(let tvSeriesID, let seasonNumber, let episodeNumber):
+        case .fullDetails(let tvSeriesID, let seasonNumber, let episodeNumber, let languageCode):
             return Self.basePath(for: tvSeriesID)
                 .appendingPathComponent(seasonNumber)
                 .appendingPathComponent("episode")
                 .appendingPathComponent(episodeNumber)
                 .appendingToResponse("credits")
-
+                .appendingLanguage(languageCode)
         }
     }
 

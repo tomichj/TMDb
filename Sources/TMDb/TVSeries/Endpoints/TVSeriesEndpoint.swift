@@ -14,7 +14,7 @@ enum TVSeriesEndpoint {
     case contentRatings(tvSeriesID: TVSeries.ID)
     case externalIDs(tvSeriesID: TVSeries.ID)
     case watch(tvSeriesID: TVSeries.ID)
-    case fullDetails(tvSeriesID: TVSeries.ID)
+    case fullDetails(tvSeriesID: TVSeries.ID, languageCode: String?)
 
 }
 
@@ -88,11 +88,11 @@ extension TVSeriesEndpoint: Endpoint {
                 .appendingPathComponent(tvSeriesID)
                 .appendingPathComponent("watch/providers")
             
-        case .fullDetails(let tvSeriesID):
+        case .fullDetails(let tvSeriesID, let languageCode):
             return Self.basePath
                 .appendingPathComponent(tvSeriesID)
                 .appendingToResponse("aggregate_credits,content_ratings,external_ids,similar,keywords")
-
+                .appendingLanguage(languageCode)
         }
     }
 

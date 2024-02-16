@@ -30,7 +30,7 @@ final class TVSeasonServiceTests: XCTestCase {
 
         XCTAssertEqual(result, expectedResult)
         XCTAssertEqual(apiClient.lastPath,
-                       TVSeasonsEndpoint.details(tvSeriesID: tvSeriesID, seasonNumber: seasonNumber).path)
+                       TVSeasonsEndpoint.details(tvSeriesID: tvSeriesID, seasonNumber: seasonNumber, languageCode: "en-US").path)
     }
 
     func testImagesReturnsImages() async throws {

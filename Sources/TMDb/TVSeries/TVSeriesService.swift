@@ -292,10 +292,10 @@ public final class TVSeriesService {
         return result.results[regionCode]
     }
     
-    public func fullDetails(forTVSeries id: TVSeries.ID) async throws -> TVSeries {
+    public func fullDetails(forTVSeries id: TVSeries.ID, languageCode: String? = nil) async throws -> TVSeries {
         let tvSeries: TVSeries
         do {
-            tvSeries = try await apiClient.get(endpoint: TVSeriesEndpoint.fullDetails(tvSeriesID: id))
+            tvSeries = try await apiClient.get(endpoint: TVSeriesEndpoint.fullDetails(tvSeriesID: id, languageCode: languageCode))
         } catch let error {
             throw TMDbError(error: error)
         }

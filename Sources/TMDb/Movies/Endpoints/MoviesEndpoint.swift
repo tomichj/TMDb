@@ -15,7 +15,7 @@ enum MoviesEndpoint {
     case releaseDates(movieID: Movie.ID)
     case externalIDs(movieID: Movie.ID)
     case watch(movieID: Movie.ID)
-    case fullDetails(movieID: Movie.ID)
+    case fullDetails(movieID: Movie.ID, languageCode: String?)
 }
 
 extension MoviesEndpoint: Endpoint {
@@ -99,10 +99,11 @@ extension MoviesEndpoint: Endpoint {
                 .appendingPathComponent(movieID)
                 .appendingPathComponent("watch/providers")
             
-        case .fullDetails(let movieID):
+        case .fullDetails(let movieID, let languageCode):
             return Self.basePath
                 .appendingPathComponent(movieID)
                 .appendingToResponse("release_dates,credits,external_ids,similar,keywords")
+                .appendingLanguage(languageCode)
             
         }
     }

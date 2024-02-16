@@ -144,14 +144,16 @@ public final class TVEpisodeService {
 
     public func fullDetails(forEpisode episodeNumber: Int, 
                             inSeason seasonNumber: Int,
-                            inTVSeries tvSeriesID: TVSeries.ID) async throws -> TVEpisode {
+                            inTVSeries tvSeriesID: TVSeries.ID,
+                            languageCode: String? = nil) async throws -> TVEpisode {
         let episode: TVEpisode
         do {
             episode = try await apiClient.get(
                 endpoint: TVEpisodesEndpoint.fullDetails(
                     tvSeriesID: tvSeriesID,
                     seasonNumber: seasonNumber,
-                    episodeNumber: episodeNumber
+                    episodeNumber: episodeNumber,
+                    languageCode: languageCode
                 )
             )
         } catch let error {

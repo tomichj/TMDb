@@ -37,11 +37,11 @@ public final class TVSeasonService {
     ///
     /// - Returns: A season of the matching TV series.
     ///
-    public func details(forSeason seasonNumber: Int, inTVSeries tvSeriesID: TVSeries.ID) async throws -> TVSeason {
+    public func details(forSeason seasonNumber: Int, inTVSeries tvSeriesID: TVSeries.ID, languageCode: String? = nil) async throws -> TVSeason {
         let season: TVSeason
         do {
             season = try await apiClient.get(
-                endpoint: TVSeasonsEndpoint.details(tvSeriesID: tvSeriesID, seasonNumber: seasonNumber)
+                endpoint: TVSeasonsEndpoint.details(tvSeriesID: tvSeriesID, seasonNumber: seasonNumber, languageCode: languageCode)
             )
         } catch let error {
             throw TMDbError(error: error)

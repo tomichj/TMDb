@@ -343,15 +343,16 @@ public final class MovieService {
     
     
     
-    public func fullDetails(forMovie id: Movie.ID) async throws -> Movie {
+    public func fullDetails(forMovie id: Movie.ID, languageCode: String? = nil) async throws -> Movie {
         let movie: Movie
 //        var debugText: String = ""
 
         do {
-            movie = try await apiClient.get(endpoint: MoviesEndpoint.fullDetails(movieID: id))
+            movie = try await apiClient.get(endpoint: MoviesEndpoint.fullDetails(movieID: id, languageCode: languageCode))
             return movie
         } catch let error {
             throw TMDbError(error: error)
+        }
 //        } catch DecodingError.dataCorrupted(let context) {
 //            debugText = "\(context)"
 //        } catch DecodingError.keyNotFound(let key, let context) {
@@ -365,7 +366,7 @@ public final class MovieService {
 //            debugText += "\ncodingPath: \(context.codingPath)."
 //        } catch {
 //            debugText = "LOCALIZED DESC: \(error.localizedDescription)"
-        }
+//        }
 
 //        print("ERROR IS: \"\(debugText)\"")
 //        throw TMDbError(error: TMDbAPIError.unknown)

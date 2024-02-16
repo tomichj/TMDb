@@ -23,12 +23,19 @@ final class DiscoverIntegrationTests: XCTestCase {
     }
 
 
-    func testMoviesUpcoming() async throws {
+    func testMoviesUpcomingViaDiscover() async throws {
         let today = Date()
         let nextMonth = Calendar.current.date(byAdding: .day, value: 30, to: today)!
-        let movieList = try await discoverService.movies(language: "en-US", primaryReleaseDateGTE: today, primaryReleaseDateLTE: nextMonth, releaseDateGTE: today, releaseDateLTE: nextMonth, sortedBy: MovieSort.popularity(descending: true), regionCode: "US")
+        let movieList = try await discoverService.movies(language: "en-US", 
+                                                         primaryReleaseDateGTE: today,
+                                                         primaryReleaseDateLTE: nextMonth,
+                                                         releaseDateGTE: today,
+                                                         releaseDateLTE: nextMonth,
+                                                         sortedBy: MovieSort.popularity(descending: true),
+                                                         regionCode: "US")
 
         XCTAssertFalse(movieList.results.isEmpty)
+//        print("movieList.results: \(movieList.results)")
     }
 
     func testTVSeries() async throws {

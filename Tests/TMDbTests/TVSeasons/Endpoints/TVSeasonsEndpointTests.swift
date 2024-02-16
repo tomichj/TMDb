@@ -6,7 +6,7 @@ final class TVSeasonsEndpointTests: XCTestCase {
     func testTVSeasonDetailsEndpointReturnsURL() throws {
         let expectedURL = try XCTUnwrap(URL(string: "/tv/1/season/2"))
 
-        let url = TVSeasonsEndpoint.details(tvSeriesID: 1, seasonNumber: 2).path
+        let url = TVSeasonsEndpoint.details(tvSeriesID: 1, seasonNumber: 2, languageCode: "en").path
 
         XCTAssertEqual(url, expectedURL)
     }
