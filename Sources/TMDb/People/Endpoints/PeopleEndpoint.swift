@@ -9,7 +9,7 @@ enum PeopleEndpoint {
     case images(personID: Person.ID)
     case popular(page: Int? = nil)
     case externalIDs(personID: Person.ID)
-    case fullDetails(personID: Person.ID)
+    case fullDetails(personID: Person.ID, languageCode: String? = nil)
     
 }
 
@@ -53,10 +53,11 @@ extension PeopleEndpoint: Endpoint {
                 .appendingPathComponent(personID)
                 .appendingPathComponent("external_ids")
         
-        case .fullDetails(let personID):
+        case .fullDetails(let personID, let languageCode):
             return Self.basePath
                 .appendingPathComponent(personID)
                 .appendingToResponse("combined_credits,external_ids")
+                .appendingLanguage(languageCode)
         }
     }
 

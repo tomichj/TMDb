@@ -200,10 +200,10 @@ public final class PersonService {
         return externalIDs
     }
 
-    public func fullDetails(forPerson id: Person.ID) async throws -> Person {
+    public func fullDetails(forPerson id: Person.ID, languageCode: String? = nil) async throws -> Person {
         let person: Person
         do {
-            person = try await apiClient.get(endpoint: PeopleEndpoint.fullDetails(personID: id))
+            person = try await apiClient.get(endpoint: PeopleEndpoint.fullDetails(personID: id, languageCode: languageCode))
         } catch let error {
             throw TMDbError(error: error)
         }
