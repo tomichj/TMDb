@@ -5,7 +5,7 @@ public struct CreditMedia: Identifiable, Codable, Equatable, Hashable {
     public let adult: Bool?
     public let backdropPath: URL?
     public let character: String?
-    public let name: String?
+    public let name: String
     public let originalName: String?
     public let overview: String
     public let posterPath: URL?
