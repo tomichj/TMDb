@@ -86,7 +86,14 @@ public final class DiscoverService {
                          page: Int? = nil) async throws -> TVSeriesPageableList {
         let tvSeriesList: TVSeriesPageableList
         do {
-            tvSeriesList = try await apiClient.get(endpoint: DiscoverEndpoint.tvSeries(language: language, sortedBy: sortedBy, genres: genres, keywords: keywords, withOriginCountry: withOriginCountry, withAirDateGTE: airDateGTE, page: page))
+            tvSeriesList = try await apiClient.get(endpoint: DiscoverEndpoint.tvSeries(language: language, 
+                                                                                       sortedBy: sortedBy,
+                                                                                       genres: genres,
+                                                                                       keywords: keywords,
+                                                                                       withOriginCountry: withOriginCountry,
+                                                                                       withAirDateGTE: airDateGTE,
+                                                                                       withAirDateLTE: airDateLTE,
+                                                                                       page: page))
         } catch let error {
             throw TMDbError(error: error)
         }

@@ -130,6 +130,5 @@ final class MovieIntegrationTests: XCTestCase {
         XCTAssertTrue(movie.similar?.page == 1)
         XCTAssertTrue(movie.keywords != nil)
         XCTAssertTrue((movie.keywords!.keywords?.count)! > 0)
-        
     }
 }

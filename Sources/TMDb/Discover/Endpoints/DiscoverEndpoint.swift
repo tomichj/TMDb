@@ -55,6 +55,7 @@ extension DiscoverEndpoint: Endpoint {
                 .appendingWithKeywords(keywords)
                 .appendingWithOriginCountry(originCountry)
                 .appendingAirDateGTE(airDateGTE)
+                .appendingAirDateLTE(airDateLTE)
                 .appendingPage(page)
         }
     }
