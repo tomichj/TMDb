@@ -91,9 +91,8 @@ extension TVSeriesEndpoint: Endpoint {
         case .fullDetails(let tvSeriesID, let languageCode):
             return Self.basePath
                 .appendingPathComponent(tvSeriesID)
-                .appendingToResponse("aggregate_credits,content_ratings,external_ids,similar,keywords")
+                .appendingToResponse("aggregate_credits,content_ratings,external_ids,similar,keywords,watch/providers")
                 .appendingLanguage(languageCode)
         }
     }
-
 }
