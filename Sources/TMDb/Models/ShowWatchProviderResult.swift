@@ -14,12 +14,11 @@ struct ShowWatchProviderResult: Codable, Equatable, Hashable {
 }
 
 
-public struct ShowWatchProviderContainer: Codable, Equatable, Hashable {
+public struct ShowWatchProviders: Codable, Equatable, Hashable {
     public let results: [String: ShowWatchProvider]
 }
 
 
-//public struct ShowWatchProvider: Equatable, Decodable { // original
 public struct ShowWatchProvider: Codable, Equatable, Hashable {
     public let link: String
     public let free: [WatchProvider]?

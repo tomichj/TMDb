@@ -136,7 +136,7 @@ public struct Movie: Identifiable, Codable, Equatable, Hashable {
     public let externalIds: MovieExternalIds?
     public let similar: SimilarMovies?
     public let keywords: MovieKeywords?
-    public let watchProviders: ShowWatchProviderContainer?
+    public let watchProviders: ShowWatchProviders?
     
 
     ///
@@ -198,7 +198,7 @@ public struct Movie: Identifiable, Codable, Equatable, Hashable {
         externalIds: MovieExternalIds? = nil,
         similar: SimilarMovies? = nil,
         keywords: MovieKeywords? = nil,
-        watchProviders: ShowWatchProviderContainer? = nil
+        watchProviders: ShowWatchProviders? = nil
     ) {
         self.id = id
         self.title = title
@@ -322,6 +322,6 @@ extension Movie {
         self.releaseDates = try container.decodeIfPresent(ReleaseDates.self, forKey: .releaseDates)
         self.similar = try container.decodeIfPresent(SimilarMovies.self, forKey: .similar)
         self.keywords = try container.decodeIfPresent(MovieKeywords.self, forKey: .keywords)
-        self.watchProviders = try container.decodeIfPresent(ShowWatchProviderContainer.self, forKey: .watchProviders)
+        self.watchProviders = try container.decodeIfPresent(ShowWatchProviders.self, forKey: .watchProviders)
     }
 }
