@@ -22,6 +22,7 @@ public struct ShowWatchProviders: Codable, Equatable, Hashable {
 public struct ShowWatchProvider: Codable, Equatable, Hashable {
     public let link: String
     public let free: [WatchProvider]?
+    public let ads: [WatchProvider]?
     public let flatrate: [WatchProvider]?
     public let buy: [WatchProvider]?
     public let rent: [WatchProvider]?
