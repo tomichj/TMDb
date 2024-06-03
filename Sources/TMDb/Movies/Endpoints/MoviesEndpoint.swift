@@ -102,7 +102,7 @@ extension MoviesEndpoint: Endpoint {
         case .fullDetails(let movieID, let languageCode):
             return Self.basePath
                 .appendingPathComponent(movieID)
-                .appendingToResponse("release_dates,credits,external_ids,similar,keywords,watch/providers")
+                .appendingToResponse("release_dates,credits,external_ids,similar,keywords,watch/providers,alternative_titles")
                 .appendingLanguage(languageCode)
         }
     }
