@@ -19,6 +19,9 @@ public struct SpokenLanguage: Identifiable, Codable, Equatable, Hashable {
     /// Language name.
     ///
     public let name: String
+    
+    
+    public let englishName: String?
 
     ///
     /// Creates a spoken language object.
@@ -27,9 +30,10 @@ public struct SpokenLanguage: Identifiable, Codable, Equatable, Hashable {
     ///    - languageCode: ISO 639-1 language code.
     ///    - name: Language name.
     ///
-    public init(languageCode: String, name: String) {
+    public init(languageCode: String, name: String, englishName: String?) {
         self.languageCode = languageCode
         self.name = name
+        self.englishName = englishName
     }
 
 }
@@ -39,6 +43,7 @@ extension SpokenLanguage {
     private enum CodingKeys: String, CodingKey {
         case languageCode = "iso6391"
         case name
+        case englishName
     }
 
 }

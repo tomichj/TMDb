@@ -37,7 +37,8 @@
     "spoken_languages": [
         {
             "iso_639_1": "en",
-            "name": "English"
+            "name": "English",
+            "english_name": "English"
         }
     ],
     "status": "Released",

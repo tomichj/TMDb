@@ -16,7 +16,8 @@ final class SpokenLanguageTests: XCTestCase {
 
     private let spokenLanguage = SpokenLanguage(
         languageCode: "en",
-        name: "English"
+        name: "English",
+        englishName: "English"
     )
 
 }

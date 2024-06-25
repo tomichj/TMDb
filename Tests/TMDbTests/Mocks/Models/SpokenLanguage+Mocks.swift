@@ -5,11 +5,13 @@ extension SpokenLanguage {
 
     static func mocks(
         languageCode: String = .randomString,
-        name: String = .randomString
+        name: String = .randomString,
+        englishName: String = .randomString
     ) -> Self {
         .init(
             languageCode: languageCode,
-            name: name
+            name: name,
+            englishName: englishName
         )
     }
 

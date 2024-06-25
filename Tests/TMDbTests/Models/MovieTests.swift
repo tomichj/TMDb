@@ -59,7 +59,8 @@ extension MovieTests {
             spokenLanguages: [
                 SpokenLanguage(
                     languageCode: "en",
-                    name: "English"
+                    name: "English",
+                    englishName: "English"
                 )
             ],
             popularity: 0.5,
