@@ -11,8 +11,8 @@ enum DiscoverEndpoint {
                 people: [Person.ID]? = nil,
                 genres: [Genre.ID]? = nil,
                 keywords: [Keyword.ID]? = nil,
-                regionCode: String? = nil,
                 companies: [ProductionCompany.ID]? = nil,
+                regionCode: String? = nil,
                 page: Int? = nil)
     
     case tvSeries(language: String? = nil,
@@ -32,7 +32,7 @@ extension DiscoverEndpoint: Endpoint {
 
     var path: URL {
         switch self {
-        case .movies(let language, let primaryReleaseDateGTE, let primaryReleaseDateLTE, let releaseDateGTE, let releaseDateLTE, let sortedBy, let people, let genres, let keywords, let regionCode, let companies, let page):
+        case .movies(let language, let primaryReleaseDateGTE, let primaryReleaseDateLTE, let releaseDateGTE, let releaseDateLTE, let sortedBy, let people, let genres, let keywords, let companies, let regionCode, let page):
             return Self.basePath
                 .appendingPathComponent("movie")
                 .appendingLanguage(language)

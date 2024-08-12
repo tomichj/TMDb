@@ -47,13 +47,13 @@ public final class DiscoverService {
                        withPeople people: [Person.ID]? = nil,
                        withGenres genres: [Genre.ID]? = nil,
                        withKeywords keywords: [Keyword.ID]? = nil,
-                       regionCode: String? = nil,
                        withCompanies companies: [ProductionCompany.ID]? = nil,
+                       regionCode: String? = nil,
                        page: Int? = nil) async throws -> MoviePageableList {
         let movieList: MoviePageableList
         do {
             movieList = try await apiClient.get(
-                endpoint: DiscoverEndpoint.movies(language: language, primaryReleaseDateGTE: primaryReleaseDateGTE, primaryReleaseDateLTE: primaryReleaseDateLTE, releaseDateGTE: releaseDateGTE, releaseDateLTE: releaseDateLTE, sortedBy: sortedBy, people: people, genres: genres, keywords: keywords, regionCode: regionCode, companies: companies, page: page)
+                endpoint: DiscoverEndpoint.movies(language: language, primaryReleaseDateGTE: primaryReleaseDateGTE, primaryReleaseDateLTE: primaryReleaseDateLTE, releaseDateGTE: releaseDateGTE, releaseDateLTE: releaseDateLTE, sortedBy: sortedBy, people: people, genres: genres, keywords: keywords, companies: companies, regionCode: regionCode, page: page)
             )
         } catch let error {
             throw TMDbError(error: error)
