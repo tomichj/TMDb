@@ -49,7 +49,7 @@ final class DiscoverServiceTests: XCTestCase {
         XCTAssertEqual(apiClient.lastPath, DiscoverEndpoint.movies(sortedBy: sortBy).path)
     }
 
-    func testMoviesWithWithPeopleReturnsMovies() async throws {
+    func testMoviesWithPeopleReturnsMovies() async throws {
         let people: [Int] = [.randomID, .randomID, .randomID, .randomID, .randomID]
         let expectedResult = MoviePageableList.mock()
         apiClient.result = .success(expectedResult)
@@ -58,6 +58,17 @@ final class DiscoverServiceTests: XCTestCase {
 
         XCTAssertEqual(result, expectedResult)
         XCTAssertEqual(apiClient.lastPath, DiscoverEndpoint.movies(people: people).path)
+    }
+
+    func testMoviesWithCompaniesReturnsMovies() async throws {
+        let companies: [Int] = [.randomID, .randomID, .randomID, .randomID, .randomID]
+        let expectedResult = MoviePageableList.mock()
+        apiClient.result = .success(expectedResult)
+
+        let result = try await service.movies(sortedBy: nil, withCompanies: companies, page: nil)
+
+        XCTAssertEqual(result, expectedResult)
+        XCTAssertEqual(apiClient.lastPath, DiscoverEndpoint.movies(companies: companies).path)
     }
 
     func testMoviesWithWithPageReturnsMovies() async throws {
