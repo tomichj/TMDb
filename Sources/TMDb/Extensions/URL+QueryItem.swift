@@ -141,7 +141,7 @@ extension URL {
         return appendingQueryItem(name: QueryItemName.withKeywords, value: value)
     }
     
-    func appendingCompanies(_ companyIDs: [ProductionCompany.ID]?) -> Self {
+    func appendingWithCompanies(_ companyIDs: [ProductionCompany.ID]?) -> Self {
         guard let companyIDs else {
             return self
         }
