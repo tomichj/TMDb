@@ -19,6 +19,8 @@ public enum TVSeriesSort: CustomStringConvertible {
     /// By vote average.
     ///
     case voteAverage(descending: Bool = true)
+    
+    case name(descending: Bool = true)
 
     public var description: String {
         "\(fieldName).\(isDescending ? "desc" : "asc")"
@@ -32,6 +34,7 @@ extension TVSeriesSort {
         static let popularity = "popularity"
         static let firstAirDate = "first_air_date"
         static let voteAverage = "vote_average"
+        static let name = "name"
     }
 
     private var fieldName: String {
@@ -44,6 +47,9 @@ extension TVSeriesSort {
 
         case .voteAverage:
             return FieldName.voteAverage
+        
+        case .name:
+            return FieldName.name
         }
     }
 
@@ -56,6 +62,9 @@ extension TVSeriesSort {
             return descending
 
         case .voteAverage(let descending):
+            return descending
+
+        case .name(let descending):
             return descending
         }
     }

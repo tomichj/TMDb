@@ -39,7 +39,10 @@ public enum MovieSort: CustomStringConvertible {
     /// By vote count.
     ///
     case voteCount(descending: Bool = true)
+    
+    case title(descending: Bool = true)
 
+    
     public var description: String {
         "\(fieldName).\(isDescending ? "desc" : "asc")"
     }
@@ -70,6 +73,9 @@ extension MovieSort {
 
         case .voteCount:
             return "vote_count"
+        
+        case .title:
+            return "title"
         }
     }
 
@@ -94,6 +100,9 @@ extension MovieSort {
             return descending
 
         case .voteCount(let descending):
+            return descending
+        
+        case .title(let descending):
             return descending
         }
     }
